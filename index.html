@@ -19,15 +19,16 @@
           <span class="icone-hamburguer">
             <span></span><span></span><span></span>
           </span>
-          MENU
+          <span class="botao-menu-texto">MENU</span>
         </button>
 
         <a href="index.html" class="logo">
-          <img src="img/logo.png" alt="Pantokrator" style="height: 65%; width: 65%;">
+          <img src="img/logo.png" alt="Pantokrator" class="logo-imagem logo-imagem--desktop" style="height: 65%; width: 65%;">
+          <img src="img/logo-unica-branca.png" alt="Pantokrator" class="logo-imagem logo-imagem--mobile">
         </a>
 
         <nav class="cabecalho-links">
-          <a href="#">PEDIDOS DE ORAÇÃO</a>
+          <a href="#" class="cabecalho-links-texto">PEDIDOS DE ORAÇÃO</a>
           <a href="https://www.instagram.com/compantokrator/" target="_blank" rel="noopener" class="cabecalho-links-icone" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/>
@@ -41,7 +42,27 @@
               <path d="M10 9l6 3-6 3V9z" fill="currentColor"/>
             </svg>
           </a>
+          <button type="button" class="cabecalho-links-icone" id="botaoBusca" aria-label="Pesquisar no site" aria-haspopup="true" aria-expanded="false" aria-controls="cabecalhoBusca">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
+              <line x1="16.2" y1="16.2" x2="21" y2="21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
         </nav>
+      </div>
+
+      <!-- Caixa de pesquisa (abre ao clicar na lupa) -->
+      <div class="cabecalho-busca" id="cabecalhoBusca">
+        <div class="container cabecalho-busca-caixa">
+          <form class="cabecalho-busca-form" id="formBusca" role="search" action="pages/busca.html" method="get">
+            <svg class="cabecalho-busca-icone" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
+              <line x1="16.2" y1="16.2" x2="21" y2="21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <input type="search" id="inputBusca" name="q" placeholder="Pesquisar no site..." aria-label="Pesquisar no site" autocomplete="off">
+            <button type="button" class="cabecalho-busca-fechar" id="buscaFechar" aria-label="Fechar busca">&times;</button>
+          </form>
+        </div>
       </div>
     </header>
 
@@ -190,12 +211,12 @@
                 </a>
               </li>
 
-              <li class="mc-cartao">
+              <li class="mc-cartao mc-cartao--oremos">
                 <a href="https://play.google.com/store/apps/details?id=com.pantokrator.oremos&hl=pt_BR" class="mc-cartao-link" target="_blank">
                   <img src="img/foto-oremos.png" alt="" class="mc-cartao-imagem">
                   <div class="mc-cartao-conteudo">
                     <span class="mc-cartao-tag">Oremos</span>
-                    <h3 class="mc-cartao-titulo">Abaixe nosso aplicativo OREMOS</h3>
+                    <h3 class="mc-cartao-titulo">Baixe nosso aplicativo OREMOS</h3>
                     <p class="mc-cartao-texto">Tenha todas as orações e artigos dentro do seu aplicativo no celular.</p>
                     <span class="mc-cartao-cta">Clique Aqui para baixar →</span>
                   </div>
@@ -558,8 +579,121 @@
   </div>
 
   <script src="js/script.js"></script>
-  <script src="js/carrossel.js"></script>
   <script src="js/carrossel-eventos.js"></script>
-  <script src="js/doacao.js"></script>
+
+  <!-- ==================== ARRASTAR/DESLIZAR NO CARROSSEL "NOSSAS ATIVIDADES" ====================
+       Além dos botões (seta anterior/próximo), o carrossel agora também troca
+       de slide quando o usuário arrasta com o dedo (touch) ou com o mouse.
+       Reaproveita os mesmos botões já existentes (ce-anterior / ce-proximo)
+       simulando um clique neles, para não duplicar a lógica do carrossel-eventos.js. -->
+  <script>
+    (function () {
+      var janela = document.querySelector('.carrossel-eventos .ce-janela');
+      var setaAnterior = document.querySelector('.carrossel-eventos .ce-anterior');
+      var setaProximo = document.querySelector('.carrossel-eventos .ce-proximo');
+
+      if (!janela || !setaAnterior || !setaProximo) return;
+
+      var arrastando = false;
+      var inicioX = 0;
+      var deslocamento = 0;
+      var LIMITE_DESLIZE = 40; // px mínimos de arraste para trocar de slide
+
+      function iniciarArraste(x) {
+        arrastando = true;
+        inicioX = x;
+        deslocamento = 0;
+        janela.classList.add('ce-arrastando');
+      }
+
+      function moverArraste(x) {
+        if (!arrastando) return;
+        deslocamento = x - inicioX;
+      }
+
+      function finalizarArraste() {
+        if (!arrastando) return;
+        arrastando = false;
+        janela.classList.remove('ce-arrastando');
+
+        if (deslocamento <= -LIMITE_DESLIZE) {
+          setaProximo.click();
+        } else if (deslocamento >= LIMITE_DESLIZE) {
+          setaAnterior.click();
+        }
+        deslocamento = 0;
+      }
+
+      // Touch (celular/tablet)
+      janela.addEventListener('touchstart', function (evento) {
+        iniciarArraste(evento.touches[0].clientX);
+      }, { passive: true });
+
+      janela.addEventListener('touchmove', function (evento) {
+        moverArraste(evento.touches[0].clientX);
+      }, { passive: true });
+
+      janela.addEventListener('touchend', finalizarArraste);
+
+      // Mouse (arrastar com o clique no desktop)
+      janela.addEventListener('mousedown', function (evento) {
+        iniciarArraste(evento.clientX);
+        evento.preventDefault();
+      });
+
+      window.addEventListener('mousemove', function (evento) {
+        moverArraste(evento.clientX);
+      });
+
+      window.addEventListener('mouseup', finalizarArraste);
+    })();
+  </script>
+
+  <!-- ==================== BUSCA DO CABEÇALHO ==================== -->
+  <script>
+    (function () {
+      var botaoBusca = document.getElementById('botaoBusca');
+      var cabecalhoBusca = document.getElementById('cabecalhoBusca');
+      var inputBusca = document.getElementById('inputBusca');
+      var buscaFechar = document.getElementById('buscaFechar');
+      var formBusca = document.getElementById('formBusca');
+
+      if (!botaoBusca || !cabecalhoBusca || !inputBusca || !formBusca) return;
+
+      function abrirBusca() {
+        cabecalhoBusca.classList.add('aberta');
+        botaoBusca.setAttribute('aria-expanded', 'true');
+        setTimeout(function () { inputBusca.focus(); }, 200);
+      }
+
+      function fecharBusca() {
+        cabecalhoBusca.classList.remove('aberta');
+        botaoBusca.setAttribute('aria-expanded', 'false');
+      }
+
+      botaoBusca.addEventListener('click', function () {
+        var aberta = cabecalhoBusca.classList.contains('aberta');
+        if (aberta) { fecharBusca(); } else { abrirBusca(); }
+      });
+
+      if (buscaFechar) {
+        buscaFechar.addEventListener('click', fecharBusca);
+      }
+
+      formBusca.addEventListener('submit', function (evento) {
+        var termo = inputBusca.value.trim();
+        if (!termo) {
+          evento.preventDefault();
+        }
+        // O formulário envia para pages/busca.html?q=termo.
+        // Crie essa página de resultados (ou troque a "action" do formulário
+        // acima) para exibir de fato os resultados da pesquisa no site.
+      });
+
+      document.addEventListener('keydown', function (evento) {
+        if (evento.key === 'Escape') fecharBusca();
+      });
+    })();
+  </script>
 </body>
 </html>
