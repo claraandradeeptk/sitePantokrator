@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artigos e Formações | Pantokrator</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/artigos.css">
+</head>
+<body>
+
+ 
+   <!-- ==================== CABEÇALHO ==================== -->
+  <header class="cabecalho">
+      <div class="container">
+        <button class="botao-menu" aria-label="Abrir menu">
+          <span class="icone-hamburguer">
+            <span></span><span></span><span></span>
+          </span>
+          MENU
+        </button>
+
+        <a href="../index.html" class="logo">
+          <img src="../img/logo.png" alt="Pantokrator" style="height: 65%; width: 65%;">
+        </a>
+
+        <nav class="cabecalho-links">
+          <a href="#">PEDIDOS DE ORAÇÃO</a>
+          <a href="https://www.instagram.com/compantokrator/" target="_blank" rel="noopener" class="cabecalho-links-icone" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@compantokrator" target="_blank" rel="noopener" class="cabecalho-links-icone" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M10 9l6 3-6 3V9z" fill="currentColor"/>
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+  <!-- ==================== MENU EM GAVETA ==================== -->
+  <div class="menu-fundo"></div>
+  <nav class="menu-principal">
+    <div class="menu-cabecalho">
+      <button class="menu-fechar" aria-label="Fechar menu">&times;</button>
+    </div>
+    <ul class="menu-lista">
+      <li><a href="./sobre-nos.html">Quem Somos</a></li>
+      <li><a href="./artigos.html">Conteúdos</a></li>
+      <li><a href="./projetos.html">Nossas atividades</a></li>
+      <li><a href="./onde-estamos.html">Onde Estamos</a></li>
+      <li><a href="#">Doe Aqui</a></li>
+      <li><a href="#">Fale Conosco</a></li>
+    </ul>
+  </nav>
+
+
+  <main>
+
+    <!-- ==================== TÍTULO DA PÁGINA ==================== -->
+    <section class="topo-pagina">
+      <div class="container">
+        <h1 class="eyebrow-pagina eyebrow-sublinhado revelar">Artigos</h1>
+      </div>
+    </section>
+
+    <!-- ==================== BANNER "NOVAS FORMAÇÕES TODA SEMANA" ==================== -->
+    <section class="secao secao-topo-zero">
+      <div class="container">
+        <div class="faixa-hero-artigos revelar">
+          <!-- IMAGEM: troque pela imagem de fundo real -->
+          <img src="../img/img-formacoes.png" alt="Novas formações toda semana">
+          <div class="titulo-artigo">NOVOS ARTIGOS TODA SEMANA</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROCURE AQUI (busca) ==================== -->
+    <section class="secao">
+      <div class="container">
+        <h2 class="eyebrow-pagina eyebrow-sublinhado revelar">Procure Aqui</h2>
+
+        <!-- ============ BUSCA ============
+             Por enquanto isso só monta o campo e o evento de envio.
+             A lógica real de busca (filtrar cards, chamar uma API, redirecionar
+             para uma página de resultados, etc.) fica no js/paginas/artigos.js,
+             no local já comentado como "ESPAÇO PRONTO PARA A BUSCA REAL". -->
+        <form class="form-busca revelar" id="formBusca">
+          <input
+            type="search"
+            id="campoBusca"
+            name="busca"
+            class="campo-busca"
+            placeholder="Buscar"
+            aria-label="Buscar artigos e formações"
+          >
+        </form>
+
+        <div class="grade-conteudos">
+
+          <!-- Coluna esquerda: miniaturas menores, sem legenda -->
+          <div class="coluna-miniaturas">
+            <!-- Repita este bloco para cada miniatura -->
+            <a href="./descobri-verdade.html" class="miniatura-conteudo revelar">
+              <img src="../img/descobri-verdade.png" alt="Descrição do conteúdo 1" class="img-artigo"> 
+            </a>
+            <a href="./qual-seu-terreno.html" class="miniatura-conteudo revelar">
+              <img src="../img/qual-seu-terreno.png" alt="Descrição do conteúdo 2" class="img-artigo">
+            </a>
+            <a href="./luz-meio-trevas.html" class="miniatura-conteudo revelar">
+              <img src="../img/luz-em-meio-trevas.png" alt="Descrição do conteúdo 3" class="img-artigo">
+            </a>
+          </div>
+
+          <!-- Coluna direita: cards largos com legenda por cima da imagem -->
+          <div class="coluna-destaques">
+            <!-- Repita este bloco para cada destaque -->
+            <a href="./coragem-lute-conversao.html" class="cartao-artigo revelar">
+              <img src="../img/coragem.png" alt="Descrição do conteúdo 1"> 
+              <div class="titulo-artigo">Coragem: Lute pela sua conversão!</div>
+            </a>
+            <a href="./porque-nao-me-curou.html" class="cartao-artigo revelar">
+              <img src="../img/porque-nao-curou.jpeg" alt="Descrição do conteúdo 2">
+              <div class="titulo-artigo">Por que não me curou?</div>
+            </a>
+            <a href="./porque-beleza-importa.html" class="cartao-artigo revelar">
+              <img src="../img/porque-beleza-importa.jpeg" alt="Descrição do conteúdo 3">
+              <div class="titulo-artigo">Por que a beleza importa?</div>
+            </a>
+            <a href="./mar-alto.html" class="cartao-artigo revelar">
+              <img src="../img/mar-alto.jpeg" alt="Descrição do conteúdo 1"> 
+              <div class="titulo-artigo">Mar Alto</div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ORAÇÕES ==================== -->
+    <section class="secao" id="oracoes">
+      <div class="container">
+        <h2 class="eyebrow-pagina eyebrow-sublinhado revelar">Orações</h2>
+
+        <div class="lista-oracoes">
+          <!-- Repita este bloco para cada oração, trocando o href para a página real -->
+          <a href="oracao-coroa.html" class="botao-oracao revelar">Coroa das Lágrimas</a>
+          <a href="terco-tap.html" class="botao-oracao revelar">Terço do Amor Poderoso</a>
+          <a href="novena-teresinha.html" class="botao-oracao revelar">Novena de Santa Teresinha</a>
+          <a href="novena-sjpii.html" class="botao-oracao revelar">Novena de São João Paulo II</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== RODAPÉ ==================== -->
+  <footer class="rodape">
+    <div class="container">
+
+      <div class="rodape-grade">
+        <div>
+          <h4>Quem Somos</h4>
+          <ul>
+            <li><a href="sobre-nos.html">Quem somos</a></li>
+            <li><a href="artigos.html">Artigos</a></li>
+            <li><a href="ebook.html">Ebooks</a></li>
+            <li><a href="projetos.html">Nossos Projetos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Onde Estamos</h4>
+          <ul>
+            <li><a href="onde-estamos.html">Sede Fundacional</a></li>
+            <li><a href="onde-estamos.html">Missão Morales</a></li>
+            <li><a href="onde-estamos.html">Missão França</a></li>
+            <li><a href="onde-estamos.html">Missão em Jaguariúna</a></li>
+            <li><a href="onde-estamos.html">Missão em Santos</a></li>
+            <li><a href="onde-estamos.html">Missão São José dos Campos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Entre Aqui</h4>
+          <ul>
+            <li><a href="pages/doacoes.html">Doações</a></li>
+            <li><a href="pages/pedido-oracao.html">Pedido de oração</a></li>
+            <li><a href="pages/contato.html">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Redes Sociais</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/compantokrator/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.youtube.com/@compantokrator" target="_blank">Youtube</a></li>
+            <li><a href="https://open.spotify.com/intl-pt/artist/7LbSgDUNXEhzbdzxePeo5Q" target="_blank">Spotify</a></li>
+            <li><a href="https://www.facebook.com/compantokrator/?locale=pt_BR" target="_blank">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="index.html" class="logo">
+        <img src="../img/logo.png" alt="Pantokrator">
+      </a>
+  </footer>
+
+  <script src="../js/script.js"></script>
+  <script src="../js/scroll-revelar.js"></script>
+  <script src="../js/paginas/artigos.js"></script>
+</body>
+</html>

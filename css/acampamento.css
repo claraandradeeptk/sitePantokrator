@@ -1,0 +1,150 @@
+/* ==========================================================================
+   PÁGINA: ACAMPAMENTO DO AMOR PODEROSO
+   ========================================================================== */
+
+/* ---------- HERO ---------- */
+.ap-hero {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.ap-hero > .container {
+  width: 100%;
+}
+
+.ap-hero-imagem {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ap-hero-sombra {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 60, 75, 0.35) 0%,
+    rgba(20, 60, 75, 0.55) 55%,
+    rgba(20, 60, 75, 0.85) 100%
+  );
+}
+
+.ap-hero-conteudo {
+  position: relative;
+  z-index: 1;
+  padding-top: 3rem;
+  padding-bottom: 1.8rem;
+  color: var(--cor-branco);
+}
+
+.ap-hero-subtitulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+.ap-hero-titulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw + 1rem, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 700px) {
+  .ap-hero {
+    min-height: 460px;
+  }
+}
+
+/* ---------- PERGUNTAS E RESPOSTAS ---------- */
+.ap-secao {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+.ap-grade {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 4rem;
+}
+
+.ap-bloco {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.ap-pergunta-rotulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--cor-marinho);
+  text-transform: lowercase;
+  margin-bottom: 0.1rem;
+}
+
+.ap-pergunta-titulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 4vw + 0.8rem, 2.3rem);
+  line-height: 1.1;
+  color: var(--cor-marinho);
+}
+
+.ap-bloco-resposta p {
+  font-size: 0.95rem;
+  color: var(--cor-marinho);
+  text-align: left;
+  line-height: 1.6;
+}
+
+/* No mobile o HTML tem a ordem: pergunta, resposta, resposta, pergunta,
+   pergunta, resposta — por isso a 2ª pergunta (invertida) e a 2ª resposta
+   estão fora de ordem no código. Aqui forçamos a ordem visual correta
+   para que cada pergunta apareça sempre imediatamente acima da sua
+   própria resposta (título, texto, título, texto, título, texto). */
+.ap-grade > *:nth-child(3) {
+  order: 1;
+}
+
+.ap-grade > *:nth-child(4) {
+  order: 0;
+}
+
+.ap-grade > *:nth-child(5),
+.ap-grade > *:nth-child(6) {
+  order: 2;
+}
+
+@media (min-width: 860px) {
+  .ap-grade {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4.5rem;
+    row-gap: 4.8rem;
+    align-items: start;
+  }
+
+  /* Linha 2 (3º e 4º blocos): força a pergunta para a coluna da esquerda
+     e a resposta para a coluna da direita, para que todos os títulos
+     fiquem sempre do lado esquerdo e todos os textos do lado direito. */
+  .ap-grade > *:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .ap-grade > *:nth-child(4) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .ap-bloco-resposta p {
+    text-align: justify;
+  }
+}

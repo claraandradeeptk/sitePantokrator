@@ -1,0 +1,98 @@
+/* ==========================================================================
+   PÁGINA: COROA DAS LÁGRIMAS (e demais páginas de oração)
+   Usa as variáveis definidas em style.css
+   ========================================================================== */
+
+.secao-oracao {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+/* Rótulo "COMO REZAR" */
+.rotulo-pagina {
+  display: inline-block;
+  font-family: var(--fonte-titulo);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-marinho);
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--cor-marinho);
+  margin-bottom: 1rem;
+}
+
+/* Título "Coroa das Lágrimas" */
+.titulo-pagina {
+  font-family: var(--fonte-titulo);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--cor-marinho);
+  margin-bottom: 2.5rem;
+}
+
+/* Cada bloco de oração (subtítulo + parágrafo) */
+.bloco-oracao {
+  margin-bottom: 2rem;
+  max-width: 760px;
+}
+
+.bloco-oracao h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--cor-marinho);
+  margin-bottom: 0.6rem;
+}
+
+.bloco-oracao h2 .detalhe {
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--cor-marinho);
+}
+
+.bloco-oracao p {
+  font-size: 1rem;
+  color: var(--cor-marinho);
+  text-align: justify;
+}
+
+.legenda-jaculatorias {
+  margin-top: 1.2rem;
+  font-weight: 700;
+  color: var(--cor-marinho);
+}
+
+.lista-jaculatorias {
+  margin-top: 0.6rem;
+  padding-left: 1.2rem;
+}
+
+.lista-jaculatorias li {
+  position: relative;
+  padding-left: 0.6rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--cor-marinho);
+}
+
+.lista-jaculatorias li::before {
+  content: "–";
+  position: absolute;
+  left: -1rem;
+  color: var(--cor-dourado);
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (min-width: 700px) {
+  .secao-oracao {
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+  }
+
+  .titulo-pagina {
+    font-size: 2.6rem;
+  }
+}

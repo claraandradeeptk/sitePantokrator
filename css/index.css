@@ -1,0 +1,1368 @@
+/* ==========================================================================
+   CARROSSEL DE LIVROS - vários itens visíveis por página
+   ========================================================================== */
+.carrossel-livros {
+  position: relative;
+  border: 1px solid rgba(20, 60, 75, 0.15);
+  border-radius: 12px;
+  background-color: #fff;
+  padding: 1.6rem 2.4rem;
+}
+
+.cl-janela {
+  overflow: hidden;
+}
+
+.cl-pista {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.cl-item img {
+  max-height: 260px;
+  width: auto;
+  border-radius: 6px;
+  box-shadow: 0 10px 24px rgba(20, 60, 75, 0.18);
+  transition: transform var(--transicao);
+}
+
+
+.cl-item {
+  flex-shrink: 0;
+  width: 33.3333%;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.cl-capa {
+  display: flex;
+  justify-content: center;
+}
+
+.cl-item img {
+  max-height: 220px;
+  width: auto;
+  border-radius: 6px;
+  box-shadow: 0 10px 24px rgba(20, 60, 75, 0.18);
+  transition: transform var(--transicao);
+}
+
+.cl-capa:hover img {
+  transform: translateY(-4px);
+}
+
+.cl-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.cl-titulo {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  font-family: var(--fonte-titulo);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cor-marinho);
+  line-height: 1.3;
+}
+
+.cl-botao-comprar {
+  flex-shrink: 0;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.85rem;
+}
+
+.cl-item a:hover img {
+  transform: translateY(-4px);
+}
+
+.cl-seta {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(20, 60, 75, 0.15);
+  background-color: #fff;
+  color: var(--cor-marinho);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(20, 60, 75, 0.15);
+  transition: background-color var(--transicao), color var(--transicao);
+  z-index: 5;
+}
+
+.cl-seta.anterior { left: -20px; }
+.cl-seta.proximo { right: -20px; }
+
+.cl-seta:hover {
+  background-color: var(--cor-vermelho);
+  color: #fff;
+  border-color: var(--cor-vermelho);
+}
+
+/* paginação clara, para usar sobre fundo branco/creme (reaproveita .carrossel-pontos) */
+.carrossel-pontos.pontos-claros {
+  padding-top: 1.2rem;
+}
+
+.carrossel-pontos.pontos-claros button {
+  background-color: rgba(20, 60, 75, 0.15);
+}
+
+.carrossel-pontos.pontos-claros button.ativo {
+  background-color: var(--cor-vermelho);
+}
+
+@media (max-width: 860px) {
+  .cl-item { width: 50%; }
+}
+
+@media (max-width: 560px) {
+  .cl-item { width: 100%; }
+}
+
+@media (max-width: 860px) {
+  .cl-item { width: 50%; }
+}
+
+@media (max-width: 560px) {
+  .cl-item { width: 100%; }
+  .carrossel-livros { padding: 1.4rem 1.6rem; }
+  .cl-seta { width: 32px; height: 32px; font-size: 0.9rem; }
+  .cl-seta.anterior { left: -14px; }
+  .cl-seta.proximo { right: -14px; }
+}
+
+/* ==========================================================================
+   HERO - VITRINE DE DESTAQUES (Artigo / Formação / Oração / Notícia)
+   ========================================================================== */
+.hero-vitrine {
+  background-color: var(--cor-branco);
+  padding: 1.2rem 0 0;
+}
+
+.vitrine-grade {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.6rem;
+  aspect-ratio: 16 / 7;
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+}
+
+.cartao-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.cartao-hero--grande {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.cartao-hero--topo {
+  grid-column: 2 / span 2;
+  grid-row: 1;
+}
+/* os dois .cartao-hero--pequeno preenchem sozinhos as duas células
+   restantes da linha 2 (colunas 2 e 3), pela ordem no HTML */
+
+.cartao-hero-link {
+  position: absolute;
+  inset: 0;
+  display: block;
+  cursor: pointer;
+}
+
+.cartao-hero-imagem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.cartao-hero-link:hover .cartao-hero-imagem {
+  transform: scale(1.06);
+}
+
+.cartao-hero-sombra {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), transparent 55%);
+  pointer-events: none;
+}
+
+.cartao-hero-titulo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 1.4rem 1.6rem;
+  color: var(--cor-branco);;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: -0.05em;
+  line-height: 1.3;
+  font-size: clamp(0.9rem, 0.7rem + 1vw, 1.3rem);
+}
+
+.cartao-hero--pequeno .cartao-hero-titulo {
+  padding: 1rem 1.1rem;
+  font-size: clamp(0.8rem, 0.65rem + 0.6vw, 1rem);
+}
+
+.cartao-hero-categoria {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: var(--cor-branco);
+  font-family: var(--fonte-titulo);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color var(--transicao);
+}
+
+.cartao-hero-categoria--artigo:hover {
+  background-color: var(--cor-vermelho);
+}
+
+.cartao-hero-categoria--formacao:hover {
+  background-color: var(--cor-dourado);
+  color: var(--cor-marinho);
+}
+
+.cartao-hero-categoria--oracao:hover {
+  background-color: var(--cor-marinho);
+}
+
+.cartao-hero-categoria--noticia:hover {
+  background-color: var(--cor-branco);
+  color: var(--cor-marinho);
+}
+
+@media (max-width: 700px) {
+  .vitrine-grade {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    aspect-ratio: unset;
+    gap: 0.7rem;
+  }
+
+  .cartao-hero--grande,
+  .cartao-hero--topo {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .cartao-hero {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ==========================================================================
+   MAIS CONTEÚDOS + LENTE CATÓLICA
+   ========================================================================== */
+.mc-grade {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 860px) {
+  .mc-grade {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+.mc-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.3rem;
+}
+
+.mc-icone {
+  color: var(--cor-vermelho);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.mc-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--cor-marinho);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Lista de conteúdos (Artigos / Ebook / Orações) */
+.mc-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.mc-cartao-link {
+  display: flex;
+  gap: 1rem;
+  border: 1px solid rgba(20, 60, 75, 0.1);
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+  transition: box-shadow var(--transicao), transform var(--transicao);
+}
+
+.mc-cartao-link:hover {
+  box-shadow: 0 8px 20px rgba(20, 60, 75, 0.12);
+  transform: translateY(-2px);
+}
+
+.mc-cartao-imagem {
+  flex-shrink: 0;
+  width: 180px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.mc-cartao-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem 0.9rem 0;
+  min-width: 0;
+}
+
+.mc-cartao-tag {
+  background-color: rgba(225, 165, 35, 0.18);
+  color: var(--cor-marinho);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+}
+
+.mc-cartao-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cor-marinho);
+  line-height: 1.3;
+}
+
+.mc-cartao-texto {
+  font-size: 0.85rem;
+  color: #5c6b72;
+  line-height: 1.4;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mc-cartao-cta {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cor-vermelho);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-top: 0.15rem;
+}
+
+@media (max-width: 480px) {
+  .mc-cartao-imagem {
+    width: 110px;
+  }
+}
+
+/* Cartões "Lente Católica" */
+.mc-coluna-direita {
+  display: flex;
+  flex-direction: column;
+}
+
+.mc-lente {
+  position: relative;
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+  margin-bottom: 1.3rem;
+}
+
+.mc-lente:last-child {
+  margin-bottom: 0;
+}
+
+.mc-lente-imagem-link {
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.mc-lente-imagem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.mc-lente-imagem-link:hover .mc-lente-imagem {
+  transform: scale(1.05);
+}
+
+.mc-lente-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background-color: var(--cor-marinho);
+  padding: 1rem 1.2rem;
+}
+
+.mc-lente-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.botao-vermelho {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: var(--cor-vermelho);
+  color: #fff;
+  padding: 0.6rem 1.3rem;
+  border-radius: var(--raio-borda);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border: none;
+  transition: background-color var(--transicao);
+}
+
+.botao-vermelho:hover {
+  background-color: #6b2622;
+}
+
+/* ==========================================================================
+   EVENTOS (faixa vermelha com carrossel)
+   ========================================================================== */
+/* ==========================================================================
+   CARROSSEL DE EVENTOS - item central maior
+   ========================================================================== */
+
+.secao-eventos {
+  background-color: var(--cor-vermelho);
+  color: #fff;
+}
+
+.secao-eventos .titulo-secao {
+  color: #fff;
+}
+
+.carrossel-eventos {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ce-janela {
+  flex: 1;
+  overflow: hidden;
+}
+
+.ce-pista {
+  display: flex;
+  align-items: center;
+  transition: transform 0.4s ease;
+}
+
+.ce-item {
+  flex-shrink: 0;
+  width: 230px;
+  padding: 0 0.8rem;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0.55;
+  transform: scale(0.82);
+}
+
+.ce-item.ativo {
+  opacity: 1;
+  transform: scale(1.08);
+  z-index: 2;
+}
+
+.cartao-evento {
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+}
+
+.cartao-evento .espaco-imagem,
+.cartao-evento img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cartao-evento {
+  position: relative;
+}
+
+.ce-seta {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transicao);
+}
+
+.ce-seta:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 700px) {
+  .ce-item {
+    width: 170px;
+    padding: 0 0.5rem;
+  }
+}
+
+/* Em telas pequenas (a maioria dos celulares), a janela do carrossel
+   (ce-janela) fica com menos de 170px de largura disponível depois de
+   descontar as duas setas + gaps - por isso o item "ativo" (que ainda
+   escala 1.08x) ficava maior que a janela e era cortado pelo
+   overflow:hidden. Reduzimos o item e as setas para caber com folga. */
+@media (max-width: 420px) {
+  .ce-item {
+    width: 128px;
+    padding: 0 0.35rem;
+  }
+
+  .carrossel-eventos {
+    gap: 0.5rem;
+  }
+
+  .ce-seta {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ==========================================================================
+   FAIXA "SEJA UM DOADOR" / "PEDIDOS DE ORAÇÃO"
+   ========================================================================== */
+.secao-doador {
+  padding: 3rem 0;
+}
+
+.faixa-chamada {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 1236px;
+  margin: 0 auto;
+  aspect-ratio: 1236 / 464;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform var(--transicao);
+}
+
+.faixa-chamada:hover {
+  transform: translateY(-3px);
+}
+
+.faixa-chamada img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .faixa-chamada {
+    border-radius: 14px;
+    /* proporção mais "quadrada" no mobile: com 1236/464 (2,66:1) o texto
+       da arte fica minúsculo numa tela de celular. Gere a imagem mobile
+       nessa proporção (ver tamanhos recomendados) em vez de só deixar o
+       navegador encolher a arte do desktop. */
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ==========================================================================
+   FAIXA "SEJA UM DOADOR" e "PEDIDOS DE ORAÇÃO"
+   (banners de largura total com imagem de fundo)
+   ========================================================================== */
+.faixa-chamada {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  /* min-height removido: ele conflitava com o aspect-ratio definido acima
+     (1236/464). Em telas estreitas o aspect-ratio já resulta numa altura
+     menor que 220px, e o min-height forçava a caixa a ficar mais alta que
+     o previsto - a imagem (object-fit: cover) então cortava mais do que
+     devia pra preencher esse espaço extra. */
+}
+
+.faixa-chamada .espaco-imagem {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+}
+
+.faixa-chamada .faixa-conteudo {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  padding: 1.5rem;
+}
+
+.faixa-chamada.escura::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.faixa-conteudo h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.faixa-conteudo p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ==========================================================================
+   NOSSOS PROJETOS (grade de botões)
+   ========================================================================== */
+.grade-projetos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 700px) {
+  .grade-projetos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.botao-projeto:hover {
+  transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   OBRA DE EVANGELIZAÇÃO / VOCACIONAL PANTOKRATOR (duas colunas)
+   (substitui a antiga grade "Nossos Projetos" nesta página;
+   as regras .grade-projetos / .botao-projeto acima foram mantidas
+   caso outras páginas do site ainda as utilizem)
+   ========================================================================== */
+.grade-frentes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 700px) {
+  .grade-frentes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.2rem;
+  }
+}
+
+.cartao-frente {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(20, 60, 75, 0.1);
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+  transition: box-shadow var(--transicao), transform var(--transicao);
+}
+
+.cartao-frente:hover {
+  box-shadow: 0 10px 24px rgba(20, 60, 75, 0.12);
+  transform: translateY(-3px);
+}
+
+.cartao-frente-imagem {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+}
+
+.cartao-frente-imagem .espaco-imagem {
+  min-height: 100%;
+}
+
+.cartao-frente-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 1.6rem;
+}
+
+.cartao-frente-selo {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cor-dourado);
+}
+
+.cartao-frente-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--cor-vermelho);
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+.cartao-frente-texto {
+  font-size: 0.92rem;
+  color: #4a5a61;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.botao-frente {
+  display: inline-block;
+  margin-top: 0.3rem;
+  background-color: var(--cor-dourado);
+  color: var(--cor-marinho);
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-align: center;
+  transition: background-color var(--transicao), transform var(--transicao);
+}
+
+.botao-frente:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .cartao-frente-conteudo {
+    padding: 1.3rem;
+  }
+
+  .cartao-frente-titulo {
+    font-size: 1.2rem;
+  }
+}
+
+/* compensa a altura do cabeçalho fixo (64px) quando o CTA
+   "Quero saber mais" rola até a Chamada Vocacional */
+#secao-vocacional {
+  scroll-margin-top: 90px;
+}
+
+/* ==========================================================================
+   MOÇÃO DO ANO (imagem + texto)
+   ========================================================================== */
+.mocao {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 780px) {
+  .mocao {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+.mocao-imagem {
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.mocao-imagem .espaco-imagem {
+  min-height: 100%;
+}
+
+.mocao-texto h3 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-vermelho);
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.mocao-texto p {
+  margin-bottom: 1rem;
+  color: var(--cor-marinho);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   CONHEÇA NOSSOS LIVROS (carrossel dentro de faixa vermelha)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   FAIXA DE CITAÇÃO (dourada)
+   ========================================================================== */
+.faixa-citacao {
+  padding: 2rem 1.5rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.faixa-citacao .container {
+  background-color: var(--cor-dourado);
+  max-width: 1100px;
+  margin: 0 auto -20px;
+  padding: 1.8rem 3rem;
+  border-radius: 24px;
+}
+
+.faixa-citacao p {
+  text-align: center;
+  font-family: var(--fonte-titulo);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+
+/* HERO - faz a imagem preencher a caixa de proporção, sem distorcer */
+.hero-carrossel .carrossel-pista,
+.hero-carrossel .carrossel-item {
+  height: 100%;
+}
+
+.hero-carrossel .imagem-carrossel {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* MOÇÃO DO ANO - mesma correção */
+.mocao-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* LIVROS - padroniza a altura dos slides e corta a capa sem distorcer */
+.livros-carrossel .carrossel {
+  aspect-ratio: 3 / 4;
+}
+
+.livros-carrossel .carrossel-pista,
+.livros-carrossel .carrossel-item {
+  height: 100%;
+}
+
+.livros-carrossel .carrossel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* NOSSOS PROJETOS - padroniza os 6 botões no mesmo formato */
+.grade-projetos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.8rem 2.6rem;
+}
+
+.botao-projeto {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex: 0 1 260px;
+  text-decoration: none;
+  transition: transform var(--transicao);
+}
+
+.botao-projeto:hover {
+  transform: translateY(-3px);
+}
+
+.botao-projeto .icone-projeto {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background-color: var(--cor-vermelho);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botao-projeto .icone-projeto img {
+  width: 55px;
+  height: 55px;
+  filter: brightness(0) invert(1);
+}
+
+.botao-projeto .texto-projeto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.botao-projeto .texto-projeto .titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--cor-vermelho);
+  text-transform: uppercase;
+}
+
+.botao-projeto .texto-projeto .legenda {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--cor-vermelho);
+}
+
+/* ==========================================================================
+   BARRA DE APOIO / DOAÇÃO (topo da página)
+   ========================================================================== */
+.barra-apoio {
+  background-color: #f8f5ef;
+  margin-top: 1rem;
+  padding: 1.5rem ;
+}
+ 
+.barra-apoio-grade {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+ 
+.barra-apoio-bloco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+ 
+.barra-apoio-chamada {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  color: var(--cor-marinho);
+  line-height: 1.3;
+  font-size: 0.95rem;
+}
+ 
+.barra-apoio-chamada strong {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--cor-marinho);
+  text-transform: uppercase;
+}
+ 
+.barra-apoio-projeto-icone {
+  width: 42px;
+  height: 42px;
+}
+ 
+.barra-apoio-projeto-rotulo {
+  font-family: var(--fonte-titulo);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cor-marinho);
+}
+ 
+.barra-apoio-projeto-nome {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--cor-marinho);
+}
+ 
+.barra-apoio-meta {
+  flex-direction: row;
+  gap: 1rem;
+}
+ 
+.barra-apoio-progresso {
+  position: relative;
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* anel de progresso via conic-gradient, controlado pela variável --progresso (0-100) definida no HTML */
+  background: conic-gradient(var(--cor-dourado) calc(var(--progresso, 0) * 3.6deg), var(--cor-borda) 0deg);
+}
+ 
+.barra-apoio-progresso::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  background-color: var(--cor-branco);
+  border-radius: 50%;
+}
+ 
+.barra-apoio-coracao {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  z-index: 1;
+}
+ 
+.barra-apoio-meta-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.15;
+}
+ 
+.barra-apoio-percentual {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--cor-marinho);
+}
+ 
+.barra-apoio-mes {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cor-marinho);
+}
+ 
+.botao-barra {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  border: none;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color var(--transicao);
+}
+ 
+.botao-barra-socio {
+  background-color: var(--cor-marinho);
+  color: #fff;
+}
+ 
+.botao-barra-socio:hover {
+  background-color: #0f2e39;
+}
+ 
+.botao-barra-doar {
+  background-color: var(--cor-dourado);
+  color: #fff;
+}
+ 
+.botao-barra-doar:hover {
+  background-color: var(--cor-dourado);
+}
+ 
+.botao-barra-icone {
+  width: 16px;
+  height: 16px;
+}
+ 
+@media (max-width: 860px) {
+  .barra-apoio-grade {
+    flex-direction: column;
+  }
+}
+ 
+@media (max-width: 400px) {
+  .barra-apoio-meta {
+    flex-direction: column;
+  }
+ 
+  .barra-apoio-meta-texto {
+    align-items: center;
+  }
+}
+ 
+/* ==========================================================================
+   MODAL "FAÇA SUA DOAÇÃO"
+   ========================================================================== */
+.doacao-fundo {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(20, 24, 31, 0.6);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 4vh 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transicao);
+  z-index: 1300;
+}
+ 
+.doacao-fundo.aberto {
+  opacity: 1;
+  pointer-events: auto;
+}
+ 
+.doacao-modal {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background-color: #FBF9F6; 
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  transform: translateY(-12px);
+  transition: transform var(--transicao);
+}
+
+ 
+.doacao-fundo.aberto .doacao-modal {
+  transform: translateY(0);
+}
+ 
+.doacao-fechar {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--cor-marinho);
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+ 
+.doacao-cabecalho {
+  background-color: var(--cor-vermelho);
+  color: #fff;
+  text-align: center;
+  padding: 2.2rem 1.5rem 1.8rem;
+  border-radius: 18px 18px 0 0;
+}
+ 
+.doacao-logo {
+  height: 42px;
+  margin: 0 auto 1rem;
+}
+ 
+.doacao-frase {
+  font-family: var(--fonte-titulo);
+  font-style: italic;
+  font-size: 1.1rem;
+  opacity: 0.92;
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+ 
+.doacao-titulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+ 
+.doacao-corpo {
+  padding: 1.6rem 1.5rem 2rem;
+}
+ 
+.doacao-metodos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+  margin-bottom: 1.4rem;
+}
+ 
+.doacao-metodo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.1rem 0.4rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #9aa6ad;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  transition: background-color var(--transicao);
+}
+ 
+.doacao-metodo .doacao-metodo-icone {
+  width: 30px;
+  height: 30px;
+}
+ 
+.doacao-metodo.ativo {
+  background-color: var(--cor-vermelho);
+}
+ 
+.doacao-valores {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 1.8rem;
+}
+ 
+.doacao-valor {
+  padding: 0.75rem 0.4rem;
+  border: 2px solid var(--cor-vermelho);
+  border-radius: 8px;
+  background-color: #f8f5ef;
+  color: var(--cor-vermelho);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: background-color var(--transicao), color var(--transicao);
+}
+ 
+.doacao-valor.ativo,
+.doacao-valor:hover {
+  background-color: var(--cor-vermelho);
+  color: #fff;
+}
+ 
+.campo-doacao {
+  margin-bottom: 1.3rem;
+}
+ 
+.campo-doacao label {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  color: var(--cor-marinho);
+  margin-bottom: 0.3rem;
+}
+ 
+.campo-obrigatorio {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--cor-vermelho);
+}
+ 
+.campo-ajuda {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--cor-marinho);
+  margin-bottom: 0.5rem;
+}
+ 
+.campo-doacao input {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--cor-branco);
+  border-radius: 8px;
+  font-family: var(--fonte-texto);
+  font-size: 0.95rem;
+  color: var(--cor-marinho);
+}
+ 
+.campo-doacao input:focus {
+  outline: none;
+  border-color: var(--cor-vermelho);
+}
+ 
+.doacao-enviar {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.4rem;
+}
+ 
+@media (max-width: 480px) {
+  .doacao-metodos {
+    gap: 0.5rem;
+  }
+ 
+  .doacao-metodo {
+    padding: 0.9rem 0.3rem;
+    font-size: 0.72rem;
+  }
+ 
+  .doacao-valores {
+    grid-template-columns: repeat(2, 1fr);
+  }
+ 
+  .doacao-cabecalho {
+    padding: 1.8rem 1.2rem 1.5rem;
+  }
+ 
+  .doacao-corpo {
+    padding: 1.3rem 1.2rem 1.6rem;
+  }
+}

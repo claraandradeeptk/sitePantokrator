@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Início | Pantokrator</title>
+
+  <!-- CSS global (menu, rodapé, botões - usado em todas as páginas) -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- CSS específico desta página -->
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+  <!-- ==================== CABEÇALHO ==================== -->
+  <header class="cabecalho">
+      <div class="container">
+        <button class="botao-menu" aria-label="Abrir menu">
+          <span class="icone-hamburguer">
+            <span></span><span></span><span></span>
+          </span>
+          MENU
+        </button>
+
+        <a href="index.html" class="logo">
+          <img src="img/logo.png" alt="Pantokrator" style="height: 65%; width: 65%;">
+        </a>
+
+        <nav class="cabecalho-links">
+          <a href="#">PEDIDOS DE ORAÇÃO</a>
+          <a href="https://www.instagram.com/compantokrator/" target="_blank" rel="noopener" class="cabecalho-links-icone" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@compantokrator" target="_blank" rel="noopener" class="cabecalho-links-icone" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M10 9l6 3-6 3V9z" fill="currentColor"/>
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+  <!-- ==================== MENU EM GAVETA ==================== -->
+  <div class="menu-fundo"></div>
+  <nav class="menu-principal">
+    <div class="menu-cabecalho">
+      <button class="menu-fechar" aria-label="Fechar menu">&times;</button>
+    </div>
+    <ul class="menu-lista">
+      <li><a href="pages/sobre-nos.html">Quem Somos</a></li>
+      <li><a href="pages/artigos.html">Conteúdos</a></li>
+      <li><a href="pages/projetos.html">Nossas atividades</a></li>
+      <li><a href="pages/onde-estamos.html">Onde Estamos</a></li>
+      <li><a href="#">Doe Aqui</a></li>
+      <li><a href="#">Fale Conosco</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+
+  <!-- ==================== HERO / VITRINE DE DESTAQUES ==================== -->
+    <section class="hero-vitrine">
+      <div class="container">
+        <div class="vitrine-grade">
+
+          <article class="cartao-hero cartao-hero--grande">
+            <a href="./pages/porque-beleza-importa.html" class="cartao-hero-link" aria-label="Por que a beleza importa?">
+              <img src="img/porque-beleza-importa.jpeg" alt="Por que a beleza importa" class="cartao-hero-imagem">
+              <span class="cartao-hero-sombra"></span>
+            </a>
+            <div>
+              <a href="./pages/artigos.html" class="cartao-hero-categoria cartao-hero-categoria--artigo">Artigo</a>
+              <span class="cartao-hero-titulo">Por que a beleza importa?</span>
+            </div>
+          </article>
+
+          <article class="cartao-hero cartao-hero--topo">
+            <a href="./pages/porque-nao-me-curou.html" class="cartao-hero-link" aria-label="Por que você não me curou?">
+              <img src="img/porque-nao-curou.jpeg" alt="Por que não curou" class="cartao-hero-imagem">
+              <span class="cartao-hero-sombra"></span>
+              <span class="cartao-hero-titulo">Por que você não me curou?</span>
+            </a>
+              <a href="./pages/artigos.html" class="cartao-hero-categoria cartao-hero-categoria--formacao">Formação</a>
+          </article>
+
+          <article class="cartao-hero cartao-hero--pequeno">
+            <a href="./pages/mar-alto.html" class="cartao-hero-link" aria-label="Mar Alto">
+              <img src="img/mar-alto.jpeg" alt="Mar Alto" class="cartao-hero-imagem">
+              <span class="cartao-hero-sombra"></span>
+              <span class="cartao-hero-titulo">Mar Alto</span>
+            </a>
+              <a href="./pages/terco-tap.html" class="cartao-hero-categoria cartao-hero-categoria--oracao">Oração</a>
+          </article>
+
+          <article class="cartao-hero cartao-hero--pequeno">
+            <a href="./pages/descobri-verdade.html" class="cartao-hero-link" aria-label="O que descobri quando conheci a verdade">
+              <img src="img/descobri-verdade.png" alt="descobri-verdade" class="cartao-hero-imagem">
+              <span class="cartao-hero-sombra"></span>
+              <span class="cartao-hero-titulo">O que descobri quando conheci a verdade</span>
+            </a>
+              <a href="./pages/artigos.html" class="cartao-hero-categoria cartao-hero-categoria--noticia">Notícia</a>          </article>
+
+        </div>
+      </div>
+    </section>
+
+            <!-- ==================== BARRA DE APOIO / DOAÇÃO ==================== -->
+    <section class="barra-apoio" style="background-color: transparent;">
+      <div class="container barra-apoio-grade">
+        <div class="barra-apoio-bloco">
+          <p class="barra-apoio-chamada">Ajude a<br><strong>Comunidade Pantokrator</strong></p>
+          <a href="#" class="botao-barra botao-barra-socio">Seja Sócio</a>
+        </div>
+
+        <div class="barra-apoio-bloco barra-apoio-projeto">
+          <img src="./img/logo-unica-preta.png" alt="">
+        </div>
+
+        <div class="barra-apoio-bloco barra-apoio-meta">
+          <div class="barra-apoio-progresso" style="--progresso: 22">
+              <path d="M12 21s-7.5-4.9-10-9.3C.4 8.6 2 5 5.6 5c2 0 3.6 1.1 4.4 2.7C10.8 6.1 12.4 5 14.4 5 18 5 19.6 8.6 18 11.7 15.5 16.1 12 21 12 21z"/>
+            </svg>
+          </div>
+          <div class="barra-apoio-meta-texto">
+            <span class="barra-apoio-percentual">22%</span>
+            <span class="barra-apoio-mes">Agosto</span>
+          </div>
+          <button type="button" class="botao-barra botao-barra-doar" data-abrir-doacao>
+            <svg class="botao-barra-icone" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21s-7.5-4.9-10-9.3C.4 8.6 2 5 5.6 5c2 0 3.6 1.1 4.4 2.7C10.8 6.1 12.4 5 14.4 5 18 5 19.6 8.6 18 11.7 15.5 16.1 12 21 12 21z" fill="currentColor"/>
+            </svg>
+            Doar
+          </button>
+        </div>
+      </div>
+    </section>
+
+      <!-- ==================== MAIS CONTEÚDOS + LENTE CATÓLICA ==================== -->
+    <section class="secao secao-mais-conteudos">
+      <div class="container">
+        <div class="mc-grade">
+
+          <!-- Coluna esquerda: Mais conteúdos -->
+          <div class="mc-coluna-esquerda">
+            <div class="mc-cabecalho">
+              <span class="mc-icone" aria-hidden="true">⋮</span>
+              <h2 class="mc-titulo">Mais conteúdos</h2>
+            </div>
+
+            <ul class="mc-lista">
+              <li class="mc-cartao">
+                <a href="./pages/artigos.html" class="mc-cartao-link">
+                  <img src="img/foto-artigos.png" alt="" class="mc-cartao-imagem">
+                  <div class="mc-cartao-conteudo">
+                    <span class="mc-cartao-tag">Artigos</span>
+                    <h3 class="mc-cartao-titulo">Conheça nosssos artigos</h3>
+                    <p class="mc-cartao-texto">Novos artigos toda semana para você se aprofundar mais na fé.</p>
+                    <span class="mc-cartao-cta">Ver mais →</span>
+                  </div>
+                </a>
+              </li>
+
+              <li class="mc-cartao">
+                <a href="./pages/ebook.html" class="mc-cartao-link">
+                  <img src="img/foto-ebook.png" alt="" class="mc-cartao-imagem">
+                  <div class="mc-cartao-conteudo">
+                    <span class="mc-cartao-tag">Ebook</span>
+                    <h3 class="mc-cartao-titulo">Conheça nossos ebooks</h3>
+                    <p class="mc-cartao-texto">Abaixe gratuitamente nossos ebooks, para auxiliar nos seus estudos</p>
+                    <span class="mc-cartao-cta">Ver mais →</span>
+                  </div>
+                </a>
+              </li>
+
+              <li class="mc-cartao">
+                <a href="./pages/terco-tap.html" class="mc-cartao-link">
+                  <img src="img/foto-oracoes.png" alt="" class="mc-cartao-imagem">
+                  <div class="mc-cartao-conteudo">
+                    <span class="mc-cartao-tag">Orações</span>
+                    <h3 class="mc-cartao-titulo">Conheça as orações do carisma</h3>
+                    <p class="mc-cartao-texto">Venha conhecer as principais orações do nosso carisma</p>
+                    <span class="mc-cartao-cta">Ver mais →</span>
+                  </div>
+                </a>
+              </li>
+
+              <li class="mc-cartao">
+                <a href="https://play.google.com/store/apps/details?id=com.pantokrator.oremos&hl=pt_BR" class="mc-cartao-link" target="_blank">
+                  <img src="img/foto-oremos.png" alt="" class="mc-cartao-imagem">
+                  <div class="mc-cartao-conteudo">
+                    <span class="mc-cartao-tag">Oremos</span>
+                    <h3 class="mc-cartao-titulo">Abaixe nosso aplicativo OREMOS</h3>
+                    <p class="mc-cartao-texto">Tenha todas as orações e artigos dentro do seu aplicativo no celular.</p>
+                    <span class="mc-cartao-cta">Clique Aqui para baixar →</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Coluna direita: Lente Católica -->
+          <div class="mc-coluna-direita">
+            <div class="mc-cabecalho">
+              <span class="mc-icone" aria-hidden="true">⋮</span>
+              <h2 class="mc-titulo">CONTEÚDOS YOUTUBE</h2>
+            </div>
+
+            <div class="mc-lente">
+              <a href="https://www.youtube.com/watch?v=Zgf-efGAdvc" target="_blank" rel="noopener" class="mc-lente-imagem-link">
+                <img src="img/img-tap.avif" alt="" class="mc-lente-imagem">
+              </a>
+              <div class="mc-lente-rodape">
+                <h3 class="mc-lente-titulo">Adoração ao vivo: Oração de confiança em Deus </h3>
+                <a href="https://www.youtube.com/watch?v=H4cK1Nyf4ak" target="_blank" rel="noopener" class="botao-vermelho">Ver mais</a>
+              </div>
+            </div>
+
+            <div class="mc-lente">
+              <a href="https://www.youtube.com/watch?v=DpGCoNusEeM" target="_blank" rel="noopener" class="mc-lente-imagem-link">
+                <img src="img/lente-catolica-1.jpg" alt="" class="mc-lente-imagem">
+              </a>
+              <div class="mc-lente-rodape">
+                <h3 class="mc-lente-titulo">Oração em familia: como rezar juntos? </h3>
+                <a href="https://www.youtube.com/watch?v=DpGCoNusEeM" target="_blank" rel="noopener" class="botao-vermelho">Ver mais</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== EVENTOS (carrossel) ==================== -->
+  <section class="secao secao-eventos">
+    <div class="container">
+      <h2 class="titulo-secao">
+        <span style="min-height:auto;font-size:0.5rem;">
+          <img src="img/logo-unica-branca.png" class="icone-titulo-secao"> 
+        </span>NOSSAS ATIVIDADES
+      </h2>
+
+      <div class="carrossel-eventos">
+        <button class="ce-seta ce-anterior" aria-label="Evento anterior">&#10094;</button>
+
+        <div class="ce-janela">
+          <div class="ce-pista">
+            <div class="ce-item">
+            <a href="./pages/aconselhamento-cristao.html">
+              <div class="cartao-evento espaco-imagem">
+                <img src="img/atividades1.png" alt="Aconselhamento Cristão">
+              </div>
+            </a>
+            </div>
+
+            <a href="./pages/bom-pastor.html">
+            <div class="ce-item">
+              <img src="img/atividades2.png" alt="Bom Pastor">
+            </div>
+            </a>
+
+            <a href="./pages/grupo-oracao.html">
+            <div class="ce-item">
+              <img src="img/atividades3.png" alt="Grupo de Oração">
+            </div>
+            </a>
+
+            <a href="./pages/sempre-fiel.html">
+            <div class="ce-item">
+              <img src="img/atividades5.png" alt="Sempre Fiel">
+            </div>
+            </a>
+
+            <a href="./pages/formacao-humana.html">
+            <div class="ce-item">
+              <img src="img/atividades6.png" alt="Formação Humana">
+            </div>
+            </a>
+
+            <a href="./pages/acampamento.html">
+              <div class="ce-item">
+                <img src="img/atividades7.png" alt="Acamapmento Amor Poderoso">
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <button class="ce-seta ce-proximo" aria-label="Próximo evento">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+
+    <!-- ==================== OBRA DE EVANGELIZAÇÃO / VOCACIONAL PANTOKRATOR ==================== -->
+    <section class="secao secao-frentes">
+      <div class="container">
+        <div class="grade-frentes">
+
+          <article class="cartao-frente cartao-frente--evangelizacao">
+            <div class="cartao-frente-imagem">
+              <img src="./img/foto-evang-ptk.JPG" alt="">
+            </div>
+            <div class="cartao-frente-conteudo">
+              <span class="cartao-frente-selo">Nossas frentes</span>
+              <h3 class="cartao-frente-titulo">Obra de Evangelização</h3>
+              <p class="cartao-frente-texto">
+                Levamos a Palavra de Deus a quem mais precisa, por meio de missões, formação e presença viva nas periferias e comunidades. 
+              </p>
+              <a href="pages/projetos.html" class="botao-frente">Quero conhecer</a>
+            </div>
+          </article>
+
+          <article class="cartao-frente cartao-frente--vocacional">
+            <div class="cartao-frente-imagem">
+              <img src="./img/foto-vocacional-ptk.JPG" alt="">
+            </div>
+            <div class="cartao-frente-conteudo">
+              <span class="cartao-frente-selo">Nossas frentes</span>
+              <h3 class="cartao-frente-titulo">Vocacional Pantokrator</h3>
+              <p class="cartao-frente-texto">
+                Você sente que Deus pode estar te chamando para uma entrega total? Conheça de perto o processo vocacional da Comunidade Pantokrator.
+              </p>
+              <a href="./pages/sobre-nos.html#secao-vocacional" class="botao-frente">Quero saber mais</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+        <!-- ==================== FAIXA "PEDIDOS DE ORAÇÃO" ==================== -->
+    <section class="secao-doador">
+      <div class="container">
+        <a href="pages/pedido-oracao.html" class="faixa-chamada escura">
+          <img src="img/ABA - NEWSLETTER.png" alt="Pedido de oração">
+        </a>
+      </div>
+    </section>
+
+    <!-- ==================== CONHEÇA NOSSOS LIVROS (carrossel) ==================== -->
+    <section class="secao secao-livros">
+      <div class="container">
+        <h2 class="titulo-secao">
+          <img src="img/logo-unica-preta.png" class="icone-titulo-secao">
+          Conheça Nossos Livros
+        </h2>
+
+        <div class="carrossel-livros">
+          <div class="cl-janela">
+            <div class="cl-pista">
+
+            <div class="cl-item">
+              <a href="https://lojapantokrator.com.br/amor-poderoso" target="_blank" class="cl-capa">
+                <img src="img/livro-amor-poderoso-novo.png" alt="Livro Amor Poderoso 1">
+              </a>
+              <div class="cl-rodape">
+                <p class="cl-titulo">Misericórdia: Amor Poderoso que faz infinitamente mais</p>
+                <a href="https://lojapantokrator.com.br/amor-poderoso" target="_blank" class="botao cl-botao-comprar">49,90</a>
+              </div>
+            </div>
+
+            <div class="cl-item">
+              <a href="https://lojapantokrator.com.br/amor-poderoso" target="_blank" class="cl-capa">
+                <img src="img/livro-alegria-misericordia.png" alt="Livro Amor Poderoso 1">
+              </a>
+              <div class="cl-rodape">
+                <p class="cl-titulo">Alegria da Misericórdia: Beato Maria-Eugênio</p>
+                <a href="https://lojapantokrator.com.br/a-alegria-da-misericordia-pantokrator" target="_blank" class="botao cl-botao-comprar">64,90</a>
+              </div>
+            </div>
+
+            <div class="cl-item">
+              <a href="https://lojapantokrator.com.br/amor-poderoso" target="_blank" class="cl-capa">
+                <img src="img/livro-pentecoste.png" alt="Livro Amor Poderoso 1">
+              </a>
+              <div class="cl-rodape">
+                <p class="cl-titulo">O Espirito Santo: E a cultura de pentecoste</p>
+                <a href="https://lojapantokrator.com.br/o-espirito-santo-e-a-cultura-de-pentecostes" target="_blank" class="botao cl-botao-comprar">35,20</a>
+              </div>
+            </div>
+
+            <div class="cl-item">
+              <a href="https://lojapantokrator.com.br/amor-poderoso" target="_blank" class="cl-capa">
+                <img src="img/livro-senhora-lagrimas.png" alt="Livro Amor Poderoso 1">
+              </a>
+              <div class="cl-rodape">
+                <p class="cl-titulo">Glórias e Poder: Nossa Senhora das lágrimas</p>
+                <a href="https://lojapantokrator.com.br/glorias-e-poder-de-nossa-senhora-das-lagrimas" target="_blank" class="botao cl-botao-comprar">72,93</a>
+              </div>
+            </div>
+
+            <div class="cl-item">
+              <a href="https://lojapantokrator.com.br/amor-poderoso" target="_blank" class="cl-capa">
+                <img src="img/livro-amor-poderoso.png" alt="Livro Amor Poderoso 1">
+              </a>
+              <div class="cl-rodape">
+                <p class="cl-titulo">Amor Poderoso: A vitória da misericórdia de Deus na sua vida</p>
+                <a href="https://lojapantokrator.com.br/amor-poderoso" target="_blank" class="botao cl-botao-comprar">18,69</a>
+              </div>
+            </div>
+
+            <div class="cl-item">
+              <a href="https://lojapantokrator.com.br/sobre-asas-de-aguia-quando-o-anjo-fala-ao-sacerdote" target="_blank" class="cl-capa">
+                <img src="img/livro-asas-aguia.png" alt="Livro Amor Poderoso 1">
+              </a>
+              <div class="cl-rodape">
+                <p class="cl-titulo">Sobre asas de águia: Quando o anjo fala ao sacerdote</p>
+                <a href="https://lojapantokrator.com.br/amor-poderoso" target="_blank" class="botao cl-botao-comprar">35,63</a>
+              </div>
+            </div>
+
+            </div>
+          </div>
+
+          <button class="cl-seta anterior" aria-label="Livro anterior">&#10094;</button>
+          <button class="cl-seta proximo" aria-label="Próximo livro">&#10095;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAIXA DE CITAÇÃO ==================== -->
+    <div class="faixa-citacao">
+      <div class="container">
+        <p>Essa fidelidade os leva a viver uma santidade possível a todos os homens, uma santidade que se realiza na vida do homem comum.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==================== RODAPÉ ==================== -->
+  <footer class="rodape">
+    <div class="container">
+
+      <div class="rodape-grade">
+        <div>
+          <h4>Quem Somos</h4>
+          <ul>
+            <li><a href="pages/sobre-nos.html">Quem somos</a></li>
+            <li><a href="pages/artigos.html">Artigos</a></li>
+            <li><a href="pages/ebook.html">Ebooks</a></li>
+            <li><a href="pages/projetos.html">Nossos Projetos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Onde Estamos</h4>
+          <ul>
+            <li><a href="pages/onde-estamos.html">Sede Fundacional</a></li>
+            <li><a href="pages/onde-estamos.html">Missão Morales</a></li>
+            <li><a href="pages/onde-estamos.html">Missão França</a></li>
+            <li><a href="pages/onde-estamos.html">Missão em Jaguariúna</a></li>
+            <li><a href="pages/onde-estamos.html">Missão em Santos</a></li>
+            <li><a href="pages/onde-estamos.html">Missão São José dos Campos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Entre Aqui</h4>
+          <ul>
+            <li><a href="pages/doacoes.html">Doações</a></li>
+            <li><a href="pages/pedido-oracao.html">Pedido de oração</a></li>
+            <li><a href="pages/contato.html">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Redes Sociais</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/compantokrator/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.youtube.com/@compantokrator" target="_blank">Youtube</a></li>
+            <li><a href="https://open.spotify.com/intl-pt/artist/7LbSgDUNXEhzbdzxePeo5Q" target="_blank">Spotify</a></li>
+            <li><a href="https://www.facebook.com/compantokrator/?locale=pt_BR" target="_blank">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="index.html" class="logo">
+        <img src="img/logo.png" alt="Pantokrator">
+      </a>
+  </footer>
+
+  <!-- ==================== MODAL "FAÇA SUA DOAÇÃO" ==================== -->
+  <div class="doacao-fundo" id="doacaoFundo">
+    <div class="doacao-modal" role="dialog" aria-modal="true" aria-labelledby="doacaoTitulo">
+      <button type="button" class="doacao-fechar" id="doacaoFechar" aria-label="Fechar">✕</button>
+
+      <div class="doacao-cabecalho">
+        <img src="img/logo-unica-branca.png" alt="Comunidade Pantokrator" class="doacao-logo">
+        <p class="doacao-frase">Ajude-nos a transformar vidas!</p>
+        <h2 id="doacaoTitulo" class="doacao-titulo">Faça sua doação</h2>
+      </div>
+
+      <div class="doacao-corpo">
+        <div class="doacao-metodos">
+          <button type="button" class="doacao-metodo ativo" data-metodo="cartao">
+            <svg class="doacao-metodo-icone" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
+              <rect x="2" y="9" width="20" height="3" fill="currentColor"/>
+            </svg>
+            <span>Cartão de Crédito</span>
+          </button>
+
+          <button type="button" class="doacao-metodo" data-metodo="boleto">
+            <svg class="doacao-metodo-icone" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="4" width="2" height="16" fill="currentColor"/>
+              <rect x="6" y="4" width="1" height="16" fill="currentColor"/>
+              <rect x="9" y="4" width="3" height="16" fill="currentColor"/>
+              <rect x="14" y="4" width="1" height="16" fill="currentColor"/>
+              <rect x="17" y="4" width="2" height="16" fill="currentColor"/>
+              <rect x="21" y="4" width="1" height="16" fill="currentColor"/>
+            </svg>
+            <span>Boleto Bancário</span>
+          </button>
+
+          <button type="button" class="doacao-metodo" data-metodo="pix">
+            <svg class="doacao-metodo-icone" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="10" y="1.5" width="4" height="4" transform="rotate(45 12 3.5)" fill="currentColor"/>
+              <rect x="10" y="18.5" width="4" height="4" transform="rotate(45 12 20.5)" fill="currentColor"/>
+              <rect x="1.5" y="10" width="4" height="4" transform="rotate(45 3.5 12)" fill="currentColor"/>
+              <rect x="18.5" y="10" width="4" height="4" transform="rotate(45 20.5 12)" fill="currentColor"/>
+            </svg>
+            <span>Pix</span>
+          </button>
+        </div>
+
+        <div class="doacao-valores">
+          <button type="button" class="doacao-valor ativo">R$10</button>
+          <button type="button" class="doacao-valor">R$50</button>
+          <button type="button" class="doacao-valor">R$100</button>
+          <button type="button" class="doacao-valor">Outro</button>
+        </div>
+
+        <div class="campo-doacao">
+          <label for="doacaoCpf">CPF <span class="campo-obrigatorio">(obrigatório)</span></label>
+          <span class="campo-ajuda">Digite somente números</span>
+          <input type="text" id="doacaoCpf" name="cpf" inputmode="numeric" placeholder="000.000.000-00">
+        </div>
+
+        <div class="campo-doacao">
+          <label for="doacaoNome">Nome <span class="campo-obrigatorio">(obrigatório)</span></label>
+          <input type="text" id="doacaoNome" name="nome">
+        </div>
+
+        <div class="campo-doacao">
+          <label for="doacaoEmail">Email <span class="campo-obrigatorio">(obrigatório)</span></label>
+          <input type="email" id="doacaoEmail" name="email">
+        </div>
+
+        <button type="submit" class="botao doacao-enviar">Continuar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="js/carrossel.js"></script>
+  <script src="js/carrossel-eventos.js"></script>
+  <script src="js/doacao.js"></script>
+</body>
+</html>

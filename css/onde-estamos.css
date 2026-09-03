@@ -1,0 +1,186 @@
+/* ==========================================================================
+   CABEÇALHO DA PÁGINA (eyebrow sublinhado + título grande espaçado)
+   ========================================================================== */
+.topo-pagina {
+  padding: clamp(1.6rem, 5vw, 2.6rem) 0 1rem;
+  text-align: center;
+}
+
+.topo-pagina .container {
+  text-align: left;
+}
+
+.eyebrow-pagina {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cor-vermelho);
+  margin-bottom: clamp(1.2rem, 4vw, 2.2rem);
+}
+
+.eyebrow-sublinhado {
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--cor-vermelho);
+}
+
+.titulo-hero-missoes {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--cor-marinho);
+  font-size: clamp(1.4rem, 4.5vw, 2.4rem);
+  letter-spacing: 0.22em;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   GRADE DE LOCALIDADES
+   (cada cartão abre/fecha ao ser clicado — ou com Enter/Espaço, se estiver
+   focado pelo teclado — controlado por js/paginas/onde-estamos-grade.js,
+   que também troca o texto da dica entre "ver mais" e "ver menos")
+   ========================================================================== */
+.grade-localidades {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+.cartao-localidade {
+  background-color: var(--cor-branco);
+  border: 1px solid rgba(20, 60, 75, 0.08);
+  border-top: 3px solid var(--cor-vermelho);
+  border-radius: 16px;
+  padding: 1.6rem 1.7rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(20, 60, 75, 0.06);
+  transition: box-shadow var(--transicao);
+}
+
+.cartao-localidade:hover {
+  box-shadow: 0 14px 30px rgba(20, 60, 75, 0.14);
+}
+
+.cartao-localidade:focus-visible {
+  outline: 2px solid var(--cor-vermelho);
+  outline-offset: 4px;
+}
+
+.localidade-titulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--cor-marinho);
+  margin-bottom: 0.3rem;
+}
+
+.localidade-subtitulo {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-vermelho);
+  margin-bottom: 1.1rem;
+}
+
+/* Envoltório da lista: controla o truncamento e o degradê de "ver mais" */
+.localidade-info-envolucro {
+  position: relative;
+}
+
+.localidade-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  font-size: 0.88rem;
+  color: var(--cor-marinho);
+  text-align: left;
+
+  /* Caixa menor por padrão: mostra só as ~3 primeiras linhas */
+  max-height: 7.2em;
+  overflow: hidden;
+  transition: max-height 0.6s ease;
+}
+
+.localidade-info li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+
+.localidade-info strong {
+  color: var(--cor-marinho);
+}
+
+.localidade-info a {
+  color: var(--cor-vermelho);
+  text-decoration: underline;
+}
+
+.localidade-icone {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+}
+
+/* Degradê que indica que há mais informação abaixo, quando fechado */
+.localidade-info-envolucro::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1.7rem; /* fica logo acima da dica */
+  height: 1.8rem;
+  background: linear-gradient(to bottom, rgba(251, 249, 246, 0), var(--cor-branco));
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+/* Dica de interação (o texto em si é trocado pelo JS, não pelo CSS) */
+.dica-leia-mais {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cor-vermelho);
+  opacity: 0.75;
+  transition: opacity 0.3s ease;
+}
+
+/* Estado aberto: a lista cresce e o degradê some (a dica continua visível,
+   só que com o texto "Clique para ver menos") */
+.cartao-localidade.aberto .localidade-info {
+  max-height: 40em;
+}
+
+.cartao-localidade.aberto .localidade-info-envolucro::after {
+  opacity: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (max-width: 780px) {
+  .grade-localidades {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .cartao-localidade {
+    padding: 1.3rem 1.2rem;
+  }
+
+  .localidade-titulo {
+    font-size: 1.1rem;
+  }
+
+  .dica-leia-mais {
+    font-size: 0.66rem;
+  }
+}

@@ -1,0 +1,280 @@
+/* ==========================================================================
+   CABEÇALHO DA PÁGINA (eyebrow sublinhado, cor marinho nesta página)
+   ========================================================================== */
+.topo-pagina {
+  padding: 2.4rem 0 0.5rem;
+}
+
+.secao-topo-zero {
+  padding-top: 0;
+}
+
+.eyebrow-pagina {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: var(--fonte-texto);
+  color: var(--cor-marinho);
+  margin-bottom: 1.6rem;
+}
+
+.eyebrow-sublinhado {
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--cor-marinho);
+}
+
+/* ==========================================================================
+   BANNER "NOVAS FORMAÇÕES TODA SEMANA"
+   ========================================================================== */
+.faixa-hero-artigos {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 10 / 3;
+}
+
+.faixa-hero-artigos .espaco-imagem,
+.faixa-hero-artigos img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* escurece o canto onde o texto fica, para garantir legibilidade sobre a foto */
+.faixa-hero-artigos::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 35%, rgba(0, 0, 0, 0.6) 100%);
+  z-index: 1;
+}
+
+/* Título dentro da faixa "Novos artigos toda semana" — usa a mesma
+   classe .titulo-artigo dos cards abaixo, mas maior e escalando com
+   clamp() em vez de um valor fixo, já que a faixa muda bastante de
+   proporção entre celular e telas largas. */
+.faixa-hero-artigos .titulo-artigo {
+  font-size: clamp(1rem, 4vw, 1.9rem);
+}
+
+/* ==========================================================================
+   BUSCA
+   ========================================================================== */
+.form-busca {
+  position: relative;
+  max-width: 420px;
+  margin: 0 0 2.5rem;
+}
+
+.campo-busca {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.95rem 1.6rem 0.95rem 3.1rem;
+  border: 2px solid var(--cor-branco);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--cor-marinho);
+  background-color: var(--cor-branco);
+  transition: border-color var(--transicao);
+}
+
+.campo-busca::placeholder {
+  color: #a3a3a3;
+}
+
+.campo-busca:focus {
+  outline: none;
+  border-color: var(--cor-marinho);
+}
+
+/* ícone de lupa alinhado dentro do campo, à esquerda do texto */
+.form-busca::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 1.3rem;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  background-color: #a3a3a3;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") center / contain no-repeat;
+  pointer-events: none;
+  transition: background-color var(--transicao);
+}
+
+.form-busca:focus-within::before {
+  background-color: var(--cor-marinho);
+}
+
+/* ==========================================================================
+   GRADE DE CONTEÚDOS (miniaturas + destaques)
+   ========================================================================== */
+.grade-conteudos {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.6rem;
+  align-items: start;
+}
+
+.coluna-miniaturas,
+.coluna-destaques {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  min-width: 0;
+}
+
+/* miniaturas pequenas, sem legenda */
+.miniatura-conteudo {
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1.08;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: transform var(--transicao);
+}
+
+.miniatura-conteudo:hover {
+  transform: translateY(-3px);
+}
+
+.miniatura-conteudo .espaco-imagem,
+.miniatura-conteudo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* cards largos com legenda sobreposta */
+.cartao-artigo {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 21 / 9;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: transform var(--transicao);
+}
+
+.cartao-artigo:hover {
+  transform: translateY(-3px);
+}
+
+.cartao-artigo .espaco-imagem,
+.cartao-artigo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.titulo-artigo {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.3rem 1.5rem;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.68), transparent 65%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.35;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   ORAÇÕES
+   ========================================================================== */
+.lista-oracoes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  max-width: 920px;
+}
+
+.botao-oracao {
+  display: block;
+  width: 100%;
+  padding: 1.3rem 1.8rem;
+  border: 2px solid var(--cor-marinho);
+  border-radius: 40px;
+  color: var(--cor-marinho);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 1rem;
+  transition: background-color var(--transicao), color var(--transicao);
+}
+
+.botao-oracao:hover {
+  background-color: var(--cor-marinho);
+  color: #fff;
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (max-width: 760px) {
+  .grade-conteudos {
+    grid-template-columns: 1fr;
+  }
+
+  .coluna-miniaturas {
+    flex-direction: row;
+  }
+
+  .coluna-miniaturas .miniatura-conteudo {
+    flex: 1;
+  }
+
+  .faixa-hero-artigos {
+    aspect-ratio: 4 / 3;
+  }
+
+  .botao-oracao {
+    font-size: 0.9rem;
+    padding: 1.1rem 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .eyebrow-pagina {
+    font-size: 0.95rem;
+  }
+
+  .grade-conteudos {
+    gap: 1.1rem;
+  }
+
+  .coluna-miniaturas {
+    gap: 0.6rem;
+  }
+
+  .titulo-artigo {
+    padding: 1rem 1.1rem;
+    font-size: 0.95rem;
+  }
+
+  .lista-oracoes {
+    gap: 0.8rem;
+  }
+
+  .botao-oracao {
+    padding: 1rem 1.2rem;
+    border-radius: 28px;
+  }
+}

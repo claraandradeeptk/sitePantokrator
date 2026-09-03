@@ -1,0 +1,131 @@
+/* ==========================================================================
+   PÁGINA ESCRITORES
+   ========================================================================== */
+
+/* Espaço extra no topo, como nas demais páginas internas */
+.pagina-escritores {
+  padding-top: 3rem;
+}
+
+/* Rótulo pequeno "ARTIGOS" com friso embaixo */
+.rotulo-artigos {
+  display: inline-block;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cor-marinho);
+  padding-bottom: 0.6rem;
+  border-bottom: 3px solid var(--cor-marinho);
+  margin-bottom: 1.6rem;
+}
+
+/* Título grande da página */
+.titulo-pagina {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 1.15rem + 2vw, 2.4rem);
+  line-height: 1.25;
+  color: var(--cor-marinho);
+  margin-bottom: 2.8rem;
+}
+
+/* ==========================================================================
+   LISTA DE ESCRITORES
+   ========================================================================== */
+.lista-escritores {
+  display: flex;
+  flex-direction: column;
+  gap: 2.6rem;
+  max-width: 640px;
+}
+
+.cartao-escritor {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.4rem;
+}
+
+/* Foto redonda (placeholder cinza até ter a imagem real) */
+.escritor-foto {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.escritor-foto img,
+.escritor-foto .espaco-imagem {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.escritor-info {
+  flex: 1;
+  padding-top: 0.2rem;
+}
+
+.escritor-nome {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--cor-marinho);
+  margin-bottom: 0.5rem;
+}
+
+.escritor-bio {
+  text-align: left;
+  color: var(--cor-marinho);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin-bottom: 0.7rem;
+}
+
+.escritor-link {
+  display: inline-block;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cor-marinho);
+  transition: color var(--transicao);
+}
+
+.escritor-link:hover {
+  color: var(--cor-vermelho);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (max-width: 480px) {
+  .escritor-foto {
+    width: 84px;
+    height: 84px;
+  }
+
+  .escritor-nome {
+    font-size: 1.05rem;
+  }
+
+  .cartao-escritor {
+    gap: 1.1rem;
+  }
+
+  .lista-escritores {
+    gap: 2.2rem;
+  }
+}
+
+@media (min-width: 700px) {
+  .pagina-escritores {
+    padding-top: 4rem;
+  }
+}

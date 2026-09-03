@@ -1,0 +1,140 @@
+/* ==========================================================================
+   PÁGINA NOSSOS PROJETOS
+   ========================================================================== */
+
+/* ---------- Topo da página ---------- */
+.topo-pagina {
+  padding: 3rem 0 0.5rem;
+}
+
+.categoria {
+  display: inline-block;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-vermelho);
+  border-bottom: 3px solid var(--cor-dourado);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.titulo-principal {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  line-height: 1.25;
+  color: var(--cor-marinho);
+  margin-bottom: 2rem;
+  max-width: 900px;
+}
+
+/* ==========================================================================
+   BLOCO DE PROJETO (imagem + texto)
+   ========================================================================== */
+
+/*
+  No mobile a imagem e o texto ficam empilhados. Para a imagem não dominar a
+  tela (pedido: "imagens menores"), ela ganha uma largura máxima menor que
+  a do container, ficando à esquerda, alinhada com o texto abaixo. O texto
+  de todos os projetos (inclusive os "invertidos") fica justificado — ver
+  ".projeto-texto p" mais abaixo.
+*/
+.projeto {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 3rem;
+}
+
+.projeto:last-child {
+  margin-bottom: 0;
+}
+
+.projeto-imagem {
+  max-width: 260px;
+  margin: 0;
+}
+
+/* A antiga classe "sem-imagem" foi removida (ver HTML): o bloco "Sempre
+   Fiel" tinha uma <img> normal, então na prática nunca era um bloco sem
+   imagem — era um layout de 1 coluna só, o que fazia a foto ficar sozinha,
+   centralizada no meio da página, enquanto todas as outras ficam de um
+   lado com o texto do outro. O HTML agora trata esse artigo como qualquer
+   outro projeto com imagem (classe "invertido"), então essa regra não é
+   mais necessária. */
+
+.projeto-imagem img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+.projeto-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--cor-marinho);
+  margin-bottom: 1rem;
+}
+
+.projeto-texto p {
+  font-size: 0.95rem;
+  color: var(--cor-marinho);
+  margin-bottom: 0.9rem;
+  text-align: justify;
+}
+
+.projeto-texto p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (min-width: 768px) {
+  /*
+    A imagem passa a ter uma largura fixa e bem menor que o texto (280px),
+    em vez da antiga divisão em frações (0.85fr / 1.15fr), que deixava a
+    foto quase do mesmo tamanho do bloco de texto. Assim a imagem funciona
+    como elemento de apoio, no mesmo "peso" visual do texto ao lado — e
+    não como o elemento principal do bloco.
+  */
+  .projeto {
+    grid-template-columns: 280px 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .projeto-imagem {
+    max-width: none;
+    margin: 0;
+  }
+
+  /* Projeto invertido: imagem à direita, texto à esquerda.
+     A ordem das colunas é invertida (texto largo primeiro, imagem fixa
+     depois) e o "order" troca a posição visual dos dois blocos, sem
+     precisar mudar a ordem no HTML. */
+  .projeto.invertido {
+    grid-template-columns: 1fr 280px;
+  }
+
+  .projeto.invertido .projeto-imagem {
+    order: 2;
+  }
+
+  .projeto.invertido .projeto-texto {
+    order: 1;
+  }
+
+  .projeto-titulo {
+    font-size: 1.4rem;
+  }
+}
