@@ -1,0 +1,197 @@
+/* ==========================================================================
+   PÁGINA "ARTIGOS DE MARCIA PATARO"
+   (usa as variáveis globais definidas em css/style.css)
+   ========================================================================== */
+
+.secao-autor {
+  padding-top: 2.5rem;
+}
+
+/* Limita a largura da coluna de leitura, como numa página de blog */
+.autor-conteudo {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ---------- Título da página ---------- */
+.autor-titulo-pagina {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-marinho);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: 0.02em;
+  margin-bottom: 2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(20, 60, 75, 0.12);
+}
+
+/* ---------- Cartão "Sobre a autora" ---------- */
+.autor-cartao {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  border-radius: var(--raio-borda);
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.autor-foto {
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+  padding: 0;
+  background-color: transparent;
+}
+
+/* quando a foto de verdade entrar no lugar do espaço reservado */
+.autor-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.autor-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.autor-nome {
+  font-family: var(--fonte-titulo);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--cor-marinho);
+  margin-bottom: 0.7rem;
+}
+
+.autor-bio {
+  color: #4a4a4a;
+  font-size: 0.95rem;
+  margin-bottom: 0.9rem;
+}
+
+.autor-links {
+  font-size: 0.9rem;
+  color: #4a4a4a;
+}
+
+.autor-links a {
+  color: var(--cor-vermelho);
+  font-weight: 700;
+  transition: color var(--transicao);
+}
+
+.autor-links a:hover {
+  color: var(--cor-dourado);
+}
+
+/* Link "Confira todos os artigos", logo abaixo da foto/bio */
+.autor-ver-artigos {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-weight: 700;
+  color: var(--cor-vermelho);
+  font-size: 0.9rem;
+  transition: color var(--transicao);
+}
+
+.autor-ver-artigos:hover {
+  color: var(--cor-dourado);
+}
+
+/* ---------- Lista de artigos ---------- */
+.lista-artigos-autor {
+  display: flex;
+  flex-direction: column;
+}
+
+.artigo-autor {
+  border-top: 1px solid rgba(20, 60, 75, 0.12);
+}
+
+.artigo-autor:last-child {
+  border-bottom: 1px solid rgba(20, 60, 75, 0.12);
+}
+
+.artigo-autor-link {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.4rem 0;
+  transition: opacity var(--transicao);
+}
+
+.artigo-autor-link:hover {
+  opacity: 0.8;
+}
+
+.artigo-autor-imagem {
+  flex-shrink: 0;
+  width: 160px;
+  height: 110px;
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+  padding: 0;
+  background-color: transparent;
+}
+
+.artigo-autor-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artigo-autor-conteudo {
+  flex: 1;
+  min-width: 0;
+}
+
+.artigo-autor-titulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--cor-marinho);
+  margin-bottom: 0.4rem;
+  transition: color var(--transicao);
+}
+
+.artigo-autor-link:hover .artigo-autor-titulo {
+  color: var(--cor-vermelho);
+}
+
+.artigo-autor-resumo {
+  color: #6b6b6b;
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: left;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 600px) {
+  .autor-cartao {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .autor-links,
+  .autor-bio {
+    text-align: left;
+  }
+
+  .artigo-autor-link {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .artigo-autor-imagem {
+    width: 100%;
+    height: 180px;
+  }
+}
