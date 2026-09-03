@@ -326,15 +326,16 @@
 .mc-cartao-link {
   display: flex;
   gap: 1rem;
+  background-color: #fff;
   border: 1px solid rgba(20, 60, 75, 0.1);
   border-radius: var(--raio-borda);
   overflow: hidden;
-  transition: box-shadow var(--transicao), transform var(--transicao);
+  transition: box-shadow var(--transicao), transform var(--transicao), background-color var(--transicao);
 }
 
 .mc-cartao-link:hover {
   box-shadow: 0 8px 20px rgba(20, 60, 75, 0.12);
-  transform: translateY(-2px);
+  transform: translateX(8px);
 }
 
 .mc-cartao-imagem {
@@ -395,6 +396,26 @@
   .mc-cartao-imagem {
     width: 110px;
   }
+}
+
+/* Cartão "Oremos" em destaque - único item da mc-lista com fundo azul-marinho */
+.mc-cartao--oremos .mc-cartao-link {
+  background-color: var(--cor-marinho);
+  border-color: var(--cor-marinho);
+}
+
+.mc-cartao--oremos .mc-cartao-titulo,
+.mc-cartao--oremos .mc-cartao-texto {
+  color: #fff;
+}
+
+.mc-cartao--oremos .mc-cartao-tag {
+  background-color: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.mc-cartao--oremos .mc-cartao-cta {
+  color: var(--cor-dourado);
 }
 
 /* Cartões "Lente Católica" */
@@ -493,6 +514,11 @@
 .ce-janela {
   flex: 1;
   overflow: hidden;
+  cursor: grab;
+}
+
+.ce-janela.ce-arrastando {
+  cursor: grabbing;
 }
 
 .ce-pista {
