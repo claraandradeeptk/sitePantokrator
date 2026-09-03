@@ -96,6 +96,23 @@
 }
 
 /* ==========================================================================
+   RESPONSIVO - APENAS CELULAR
+   Centraliza a imagem e o título de cada projeto somente em telas
+   menores que 768px. A partir de 768px (ver bloco abaixo), o layout
+   passa a ser em duas colunas e não é afetado por esta regra.
+   ========================================================================== */
+@media (max-width: 767px) {
+  .projeto-imagem {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .projeto-titulo {
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
    RESPONSIVO
    ========================================================================== */
 @media (min-width: 768px) {
@@ -115,7 +132,8 @@
 
   .projeto-imagem {
     max-width: none;
-    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* Projeto invertido: imagem à direita, texto à esquerda.
@@ -136,5 +154,6 @@
 
   .projeto-titulo {
     font-size: 1.4rem;
+    text-align: center;
   }
 }
