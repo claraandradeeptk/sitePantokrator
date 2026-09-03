@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artigos de Marcia Pataro | Pantokrator</title>
+
+  <!-- CSS global (menu, rodapé, botões - usado em todas as páginas) -->
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- CSS específico desta página -->
+  <link rel="stylesheet" href="../css/artigos-escritores-base.css">
+</head>
+<body>
+
+  <!-- ==================== CABEÇALHO ==================== -->
+  <header class="cabecalho">
+      <div class="container">
+        <button class="botao-menu" aria-label="Abrir menu">
+          <span class="icone-hamburguer">
+            <span></span><span></span><span></span>
+          </span>
+          <span class="botao-menu-texto">MENU</span>
+        </button>
+
+        <a href="../index.html" class="logo">
+          <img src="../img/logo.png" alt="Pantokrator" class="logo-imagem logo-imagem--desktop" style="height: 65%; width: 65%;">
+          <img src="../img/logo-unica-branca.png" alt="Pantokrator" class="logo-imagem logo-imagem--mobile">
+        </a>
+
+        <nav class="cabecalho-links">
+          <a href="https://www.youtube.com/@compantokrator" target="_blank" rel="noopener" class="cabecalho-links-icone" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M10 9l6 3-6 3V9z" fill="currentColor"/>
+            </svg>
+          </a>
+          <button type="button" class="cabecalho-links-icone" id="botaoBusca" aria-label="Pesquisar no site" aria-haspopup="true" aria-expanded="false" aria-controls="cabecalhoBusca">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
+              <line x1="16.2" y1="16.2" x2="21" y2="21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Caixa de pesquisa (abre ao clicar na lupa) -->
+      <div class="cabecalho-busca" id="cabecalhoBusca">
+        <div class="container cabecalho-busca-caixa">
+          <form class="cabecalho-busca-form" id="formBusca" role="search" action="busca.html" method="get">
+            <svg class="cabecalho-busca-icone" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
+              <line x1="16.2" y1="16.2" x2="21" y2="21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <input type="search" id="inputBusca" name="q" placeholder="Pesquisar no site..." aria-label="Pesquisar no site" autocomplete="off">
+            <button type="button" class="cabecalho-busca-fechar" id="buscaFechar" aria-label="Fechar busca">&times;</button>
+          </form>
+        </div>
+      </div>
+    </header>
+
+  <!-- ==================== MENU EM GAVETA ==================== -->
+  <div class="menu-fundo"></div>
+  <nav class="menu-principal">
+    <div class="menu-cabecalho">
+      <button class="menu-fechar" aria-label="Fechar menu">&times;</button>
+    </div>
+    <ul class="menu-lista">
+      <li><a href="sobre-nos.html">Quem Somos</a></li>
+      <li><a href="artigos.html">Conteúdos</a></li>
+      <li><a href="projetos.html">Nossas atividades</a></li>
+      <li><a href="onde-estamos.html">Onde Estamos</a></li>
+      <li><a href="#">Doe Aqui</a></li>
+      <li><a href="#">Fale Conosco</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ==================== ARTIGOS DE MARCIA PATARO ==================== -->
+    <section class="secao secao-autor">
+      <div class="container autor-conteudo">
+
+        <h1 class="autor-titulo-pagina">Artigos de Marcia Pataro</h1>
+
+        <!-- Cartão "Sobre a autora" -->
+        <div class="autor-cartao">
+          <div class="autor-foto espaco-imagem">
+            <img src="../img/marcia-pataro.jpg" alt="">
+          </div>
+
+          <div class="autor-info">
+            <h2 class="autor-nome">Sobre Marcia Pataro</h2>
+            <p class="autor-bio">
+              Consagrada da Comunidade Pantokrator há 5 anos. Formada em Fisioterapia, formadora comunitária, da missão de Campinas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Lista de artigos da autora -->
+        <ul class="lista-artigos-autor" id="lista-artigos">
+
+          <li class="artigo-autor">
+            <a href="#" class="artigo-autor-link">
+              <div class="artigo-autor-imagem espaco-imagem">
+                <img src="../img/descobri-verdade.png" alt="">
+              </div>
+              <div class="artigo-autor-conteudo">
+                <h3 class="artigo-autor-titulo">O que descobri quando conheci a verdade?</h3>
+                <p class="artigo-autor-resumo">
+                  Depois, compreendi que a Igreja sempre ensinou que somente Deus recebe adoração. Os santos são honrados porque 
+                  permitiram que Cristo transformasse suas vidas e se tornaram testemunhas da santidade.
+                </p>
+              </div>
+            </a>
+          </li>
+
+          <li class="artigo-autor">
+            <a href="#" class="artigo-autor-link">
+              <div class="artigo-autor-imagem espaco-imagem">
+                <img src="../img/mar-alto.jpeg" alt="">
+              </div>
+              <div class="artigo-autor-conteudo">
+                <h3 class="artigo-autor-titulo">Mar Alto</h3>
+                <p class="artigo-autor-resumo">
+                  Todos aqueles que disseram sim a Deus e descobriram que a santidade passa muito mais pela cruz 
+                  do que pelos aplausos. Toda vocação, mais cedo ou mais tarde, atravessa a experiência das redes vazias.
+                </p>
+              </div>
+            </a>
+          </li>
+
+          <li class="artigo-autor">
+            <a href="#" class="artigo-autor-link">
+              <div class="artigo-autor-imagem espaco-imagem">
+                    <img src="../img/porque-beleza-importa.jpeg" alt="">
+              </div>
+              <div class="artigo-autor-conteudo">
+                <h3 class="artigo-autor-titulo">Por que a beleza importa?</h3>
+                <p class="artigo-autor-resumo">
+                  É interessante perceber como nossa sociedade atualmente vive a base de frase de efeito, 
+                  motivacional do dia. Como aquele povo que seguia Jesus só para encher o bucho e não a alma.
+                </p>
+              </div>
+            </a>
+          </li>
+
+          <!-- Para adicionar mais artigos, copie e cole um <li class="artigo-autor">...</li>
+               inteiro (como os de cima) e ajuste o link, a imagem, o título e o resumo. -->
+
+        </ul>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== RODAPÉ ==================== -->
+  <footer class="rodape">
+    <div class="container">
+
+      <div class="rodape-grade">
+        <div>
+          <h4>Quem Somos</h4>
+          <ul>
+            <li><a href="sobre-nos.html">Quem somos</a></li>
+            <li><a href="artigos.html">Artigos</a></li>
+            <li><a href="ebook.html">Ebooks</a></li>
+            <li><a href="projetos.html">Nossos Projetos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Onde Estamos</h4>
+          <ul>
+            <li><a href="onde-estamos.html">Sede Fundacional</a></li>
+            <li><a href="onde-estamos.html">Missão Morales</a></li>
+            <li><a href="onde-estamos.html">Missão França</a></li>
+            <li><a href="onde-estamos.html">Missão em Jaguariúna</a></li>
+            <li><a href="onde-estamos.html">Missão em Santos</a></li>
+            <li><a href="onde-estamos.html">Missão São José dos Campos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Entre Aqui</h4>
+          <ul>
+            <li><a href="doacoes.html">Doações</a></li>
+            <li><a href="pedido-oracao.html">Pedido de oração</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Redes Sociais</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/compantokrator/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.youtube.com/@compantokrator" target="_blank">Youtube</a></li>
+            <li><a href="https://open.spotify.com/intl-pt/artist/7LbSgDUNXEhzbdzxePeo5Q" target="_blank">Spotify</a></li>
+            <li><a href="https://www.facebook.com/compantokrator/?locale=pt_BR" target="_blank">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.png" alt="Pantokrator">
+      </a>
+  </footer>
+
+  <script src="../js/script.js"></script>
+
+  <!-- ==================== BUSCA DO CABEÇALHO ==================== -->
+  <script>
+    (function () {
+      var botaoBusca = document.getElementById('botaoBusca');
+      var cabecalhoBusca = document.getElementById('cabecalhoBusca');
+      var inputBusca = document.getElementById('inputBusca');
+      var buscaFechar = document.getElementById('buscaFechar');
+      var formBusca = document.getElementById('formBusca');
+
+      if (!botaoBusca || !cabecalhoBusca || !inputBusca || !formBusca) return;
+
+      function abrirBusca() {
+        cabecalhoBusca.classList.add('aberta');
+        botaoBusca.setAttribute('aria-expanded', 'true');
+        setTimeout(function () { inputBusca.focus(); }, 200);
+      }
+
+      function fecharBusca() {
+        cabecalhoBusca.classList.remove('aberta');
+        botaoBusca.setAttribute('aria-expanded', 'false');
+      }
+
+      botaoBusca.addEventListener('click', function () {
+        var aberta = cabecalhoBusca.classList.contains('aberta');
+        if (aberta) { fecharBusca(); } else { abrirBusca(); }
+      });
+
+      if (buscaFechar) {
+        buscaFechar.addEventListener('click', fecharBusca);
+      }
+
+      formBusca.addEventListener('submit', function (evento) {
+        var termo = inputBusca.value.trim();
+        if (!termo) {
+          evento.preventDefault();
+        }
+      });
+
+      document.addEventListener('keydown', function (evento) {
+        if (evento.key === 'Escape') fecharBusca();
+      });
+    })();
+  </script>
+</body>
+</html>
