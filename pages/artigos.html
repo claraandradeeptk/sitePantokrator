@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conteúdos | Pantokrator</title>
+
+  <!-- CSS único desta página (global + busca, abas, cards e orações) -->
+  <link rel="stylesheet" href="../css/artigos.css">
+</head>
+<body>
+
+  <!-- ==================== CABEÇALHO ==================== -->
+  <header class="cabecalho">
+    <div class="container">
+      <button class="botao-menu" aria-label="Abrir menu">
+        <span class="icone-hamburguer">
+          <span></span><span></span><span></span>
+        </span>
+        MENU
+      </button>
+
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.png" alt="Pantokrator" class="logo-imagem logo-imagem--desktop" style="height: 65%; width: 65%;">
+        <img src="../img/logo-unica-branca.png" alt="Pantokrator" class="logo-imagem logo-imagem--mobile">
+      </a>
+
+      <nav class="cabecalho-links">
+        <a href="#" class="cabecalho-links-texto">PEDIDOS DE ORAÇÃO</a>
+        <a href="https://www.instagram.com/compantokrator/" target="_blank" rel="noopener" class="cabecalho-links-icone" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@compantokrator" target="_blank" rel="noopener" class="cabecalho-links-icone" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M10 9l6 3-6 3V9z" fill="currentColor"/>
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== MENU EM GAVETA ==================== -->
+  <div class="menu-fundo"></div>
+  <nav class="menu-principal">
+    <div class="menu-cabecalho">
+      <button class="menu-fechar" aria-label="Fechar menu">&times;</button>
+    </div>
+    <ul class="menu-lista">
+      <li><a href="./sobre-nos.html">Quem Somos</a></li>
+
+      <!-- Menu suspenso "Conteúdos" -->
+      <li class="menu-item-submenu">
+        <button type="button" class="menu-submenu-botao" aria-expanded="false" aria-controls="submenuConteudos">
+          Conteúdos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <ul class="menu-submenu" id="submenuConteudos">
+          <li><a href="./artigos.html#artigos">Artigos</a></li>
+          <li><a href="./artigos.html#formacao">Formação</a></li>
+          <li><a href="./artigos.html#oracao">Oração</a></li>
+          <li><a href="./artigos.html#noticia">Notícia</a></li>
+          <li><a href="./artigos.html#lente-catolica">Lente Católica</a></li>
+        </ul>
+      </li>
+
+      <li><a href="./projetos.html">Obra de Evangelização</a></li>
+      <li><a href="./liturgia.html">Liturgia Diária</a></li>
+      <li><a href="./onde-estamos.html">Onde Estamos</a></li>
+      <li><a href="#">Doe Aqui</a></li>
+      <li><a href="#">Fale Conosco</a></li>
+    </ul>
+  </nav>
+
+
+  <main>
+
+    <!-- ==================== TÍTULO DA PÁGINA ==================== -->
+    <section class="topo-pagina">
+      <div class="container">
+        <h1 class="eyebrow-pagina eyebrow-sublinhado revelar">Conteúdos</h1>
+      </div>
+    </section>
+
+    <!-- ==================== BUSCA + ABAS ==================== -->
+    <section class="secao secao-topo-zero">
+      <div class="container">
+        <!-- ============ BUSCA ============
+             Por enquanto isso só monta o campo e o evento de envio.
+             A lógica real de busca (filtrar cards, chamar uma API, redirecionar
+             para uma página de resultados, etc.) fica no js/paginas/artigos.js,
+             no local já comentado como "ESPAÇO PRONTO PARA A BUSCA REAL". -->
+        <form class="form-busca revelar" id="formBusca">
+          <input
+            type="search"
+            id="campoBusca"
+            name="busca"
+            class="campo-busca"
+            placeholder="Buscar"
+            aria-label="Buscar conteúdos"
+          >
+        </form>
+
+        <!-- ============ ABAS ============ -->
+        <div class="abas" id="conteudos-abas" role="tablist" aria-label="Tipos de conteúdo">
+          <button type="button" class="aba ativa" role="tab" id="aba-artigos" aria-controls="painel-artigos" aria-selected="true" data-aba="artigos">Artigos</button>
+          <button type="button" class="aba" role="tab" id="aba-formacao" aria-controls="painel-formacao" aria-selected="false" tabindex="-1" data-aba="formacao">Formação</button>
+          <button type="button" class="aba" role="tab" id="aba-oracao" aria-controls="painel-oracao" aria-selected="false" tabindex="-1" data-aba="oracao">Oração</button>
+          <button type="button" class="aba" role="tab" id="aba-noticia" aria-controls="painel-noticia" aria-selected="false" tabindex="-1" data-aba="noticia">Notícia</button>
+          <button type="button" class="aba" role="tab" id="aba-lente-catolica" aria-controls="painel-lente-catolica" aria-selected="false" tabindex="-1" data-aba="lente-catolica">Lente Católica</button>
+        </div>
+
+        <!-- ============ ABA: ARTIGOS ============ -->
+        <div class="painel-aba ativo" role="tabpanel" id="painel-artigos" aria-labelledby="aba-artigos">
+
+          <!-- Banner "Novos artigos toda semana" -->
+          <div class="faixa-hero-artigos">
+            <!-- IMAGEM: troque pela imagem de fundo real -->
+            <img src="../img/img-formacoes.png" alt="Novos artigos toda semana">
+            <div class="titulo-artigo">NOVOS ARTIGOS TODA SEMANA</div>
+          </div>
+
+          <div class="grade-conteudos">
+
+            <!-- Coluna esquerda: miniaturas menores, sem legenda -->
+            <div class="coluna-miniaturas">
+              <!-- Repita este bloco para cada miniatura -->
+              <a href="./descobri-verdade.html" class="miniatura-conteudo">
+                <img src="../img/descobri-verdade.png" alt="O que descobri quando conheci a verdade?" class="img-artigo">
+              </a>
+              <a href="./qual-seu-terreno.html" class="miniatura-conteudo">
+                <img src="../img/qual-seu-terreno.png" alt="Qual é o seu terreno?" class="img-artigo">
+              </a>
+              <a href="./luz-meio-trevas.html" class="miniatura-conteudo">
+                <img src="../img/luz-em-meio-trevas.png" alt="Como ser luz em meio às trevas" class="img-artigo">
+              </a>
+            </div>
+
+            <!-- Coluna direita: cards largos com legenda por cima da imagem -->
+            <div class="coluna-destaques">
+              <!-- Repita este bloco para cada destaque -->
+              <a href="./coragem-lute-conversao.html" class="cartao-artigo">
+                <img src="../img/coragem.png" alt="Coragem: Lute pela sua conversão!">
+                <div class="titulo-artigo">Coragem: Lute pela sua conversão!</div>
+              </a>
+              <a href="./porque-nao-me-curou.html" class="cartao-artigo">
+                <img src="../img/porque-nao-curou.jpeg" alt="Por que não me curou?">
+                <div class="titulo-artigo">Por que não me curou?</div>
+              </a>
+              <a href="./porque-beleza-importa.html" class="cartao-artigo">
+                <img src="../img/porque-beleza-importa.jpeg" alt="Por que a beleza importa?">
+                <div class="titulo-artigo">Por que a beleza importa?</div>
+              </a>
+              <a href="./mar-alto.html" class="cartao-artigo">
+                <img src="../img/mar-alto.jpeg" alt="Mar Alto">
+                <div class="titulo-artigo">Mar Alto</div>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ============ ABA: FORMAÇÃO ============ -->
+        <div class="painel-aba" role="tabpanel" id="painel-formacao" aria-labelledby="aba-formacao" hidden>
+          <!--
+            QUANDO TIVER FORMAÇÕES: apague a caixa "aba-vazia" abaixo e cole no lugar
+            a mesma estrutura da aba de Artigos, por exemplo:
+
+            <div class="grade-conteudos">
+              <div class="coluna-miniaturas">
+                <a href="./formacao-1.html" class="miniatura-conteudo">
+                  <img src="../img/formacao-1.png" alt="Título da formação" class="img-artigo">
+                </a>
+              </div>
+              <div class="coluna-destaques">
+                <a href="./formacao-2.html" class="cartao-artigo">
+                  <img src="../img/formacao-2.png" alt="Título da formação">
+                  <div class="titulo-artigo">Título da formação</div>
+                </a>
+              </div>
+            </div>
+          -->
+          <div class="aba-vazia">
+            <strong>Novas formações em breve</strong>
+            Estamos preparando este espaço. Volte em breve!
+          </div>
+        </div>
+
+        <!-- ============ ABA: ORAÇÃO ============
+             Cada oração é um <details>: ao clicar no título ela expande ali mesmo.
+             O atributo name="oracoes" faz abrir uma de cada vez.
+             O id de cada oração serve de link direto, ex.: artigos.html#oracao-terco-tap -->
+        <div class="painel-aba" role="tabpanel" id="painel-oracao" aria-labelledby="aba-oracao" hidden>
+          <div class="lista-oracoes">
+
+            <!-- ---------- COROA DAS LÁGRIMAS ---------- -->
+            <details class="oracao" id="oracao-coroa-das-lagrimas" name="oracoes">
+              <summary class="oracao-resumo">
+                <span class="oracao-titulos">
+                  <span class="oracao-rotulo">Como rezar</span>
+                  <span class="oracao-nome">Coroa das Lágrimas</span>
+                  
+                </span>
+                <svg class="oracao-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+
+              <div class="oracao-conteudo">
+
+                <!-- COMPARTILHAR -->
+                <div class="compartilhar compartilhar-oracao">
+                  <a href="#" data-rede="facebook" target="_blank" rel="noopener" aria-label="Compartilhar no Facebook" title="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8.6v-7.7H10v-3h2.6V9.2c0-2.6 1.6-4 3.9-4 1.1 0 2 .1 2.3.1v2.7h-1.6c-1.3 0-1.5.6-1.5 1.5v1.9h3l-.4 3h-2.6V22H20a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
+                  </a>
+                  <a href="https://www.instagram.com/compantokrator/" data-rede="instagram" target="_blank" rel="noopener" aria-label="Instagram da Comunidade Pantokrator" title="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                  </a>
+                  <a href="#" data-rede="linkedin" target="_blank" rel="noopener" aria-label="Compartilhar no LinkedIn" title="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  </a>
+                  <a href="#" data-rede="whatsapp" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp" title="WhatsApp">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  </a>
+                  <a href="#" data-rede="telegram" target="_blank" rel="noopener" aria-label="Compartilhar no Telegram" title="Telegram">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                  </a>
+                  <a href="#" data-rede="email" aria-label="Compartilhar por e-mail" title="E-mail">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                  </a>
+                </div>
+
+                <div class="bloco-oracao">
+                  <h3>Oração inicial:</h3>
+                  <p>Eis-nos aqui aos Vossos pés, ó dulcíssimo Jesus Crucificado, para Vos oferecermos as lágrimas d'Aquela que, com tanto amor, Vos acompanhou no caminho doloroso do Calvário. Fazei, ó bom Mestre, que nós saibamos aproveitar da lição que elas nos dão, para que, na Terra, realizando a Vossa Santíssima Vontade, possamos um dia, no Céu, Vos louvar por toda a eternidade.</p>
+                </div>
+
+                <div class="bloco-oracao">
+                  <h3>Nas contas brancas <span class="detalhe">(grandes, que separam os grupos de 7 contas):</span></h3>
+                  <p>Vêde, ó Jesus, que são as lágrimas d'Aquela que mais Vos amou na Terra, e que mais Vos ama no Céu.</p>
+                </div>
+
+                <div class="bloco-oracao">
+                  <h3>Nas contas brancas <span class="detalhe">(grupos de 7 contas):</span></h3>
+                  <p>Meu Jesus, ouvi os nossos rogos, pelas Lágrimas de Vossa Mãe Santíssima.</p>
+                </div>
+
+                <div class="bloco-oracao">
+                  <h3>No fim, repete-se três vezes, nas três contas brancas finais:</h3>
+                  <p>Vêde, ó Jesus, que são as lágrimas d'Aquela que mais Vos amou na Terra, e que mais Vos ama no Céu.</p>
+                </div>
+
+                <div class="bloco-oracao">
+                  <h3>Oração final:</h3>
+                  <p>Virgem Santíssima e Mãe das Dores, nós Vos pedimos que junteis os Vossos rogos aos nossos, a fim de que Jesus, Vosso Divino Filho, a quem nos dirigimos em nome das Vossas lágrimas de Mãe, ouça as nossas preces e nos conceda, com as graças que desejamos, a coroa da vida eterna. Amém.</p>
+
+                  <p class="legenda-jaculatorias">Jaculatórias finais (para rezar contemplando e beijando a medalha):</p>
+                  <ul class="lista-jaculatorias">
+                    <li>Por Vossa mansidão divina, ó Jesus Manietado, salvai o mundo do erro que o ameaça!</li>
+                    <li>Ó Virgem Dolorosíssima, as Vossas Lágrimas derrubaram o império infernal!</li>
+                  </ul>
+                </div>
+
+              </div>
+            </details>
+
+            <!-- ---------- TERÇO DO AMOR PODEROSO ---------- -->
+            <details class="oracao" id="oracao-terco-tap" name="oracoes">
+              <summary class="oracao-resumo">
+                <span class="oracao-titulos">
+                  <span class="oracao-rotulo">Como rezar</span>
+                  <span class="oracao-nome">Terço do Amor Poderoso</span>
+                </span>
+                <svg class="oracao-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+
+              <div class="oracao-conteudo">
+
+                <!-- COMPARTILHAR -->
+                <div class="compartilhar compartilhar-oracao">
+                  <a href="#" data-rede="facebook" target="_blank" rel="noopener" aria-label="Compartilhar no Facebook" title="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8.6v-7.7H10v-3h2.6V9.2c0-2.6 1.6-4 3.9-4 1.1 0 2 .1 2.3.1v2.7h-1.6c-1.3 0-1.5.6-1.5 1.5v1.9h3l-.4 3h-2.6V22H20a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
+                  </a>
+                  <a href="https://www.instagram.com/compantokrator/" data-rede="instagram" target="_blank" rel="noopener" aria-label="Instagram da Comunidade Pantokrator" title="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                  </a>
+                  <a href="#" data-rede="linkedin" target="_blank" rel="noopener" aria-label="Compartilhar no LinkedIn" title="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  </a>
+                  <a href="#" data-rede="whatsapp" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp" title="WhatsApp">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  </a>
+                  <a href="#" data-rede="telegram" target="_blank" rel="noopener" aria-label="Compartilhar no Telegram" title="Telegram">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                  </a>
+                  <a href="#" data-rede="email" aria-label="Compartilhar por e-mail" title="E-mail">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                  </a>
+                </div>
+
+                <div class="bloco-oracao">
+                  <h3>Criação do Terço do Amor Poderoso</h3>
+                  <p>A devoção ao Amor Poderoso é o louvor da vitória do amor de Cristo na Cruz que vence todas as coisas, pois Ele é o Amor Poderoso que tudo pode realizar em nossas vidas. Amor que tudo pode curar, libertar, providenciar.
+                    Viver o Amor Poderoso significa alargar-se em Deus, adentrar a dimensão do amor de Deus que supera tudo quanto existe e vence todo o mal. Por isso, nos diz São Paulo: “Coisas que os olhos não viram, os ouvidos não ouviram e o coração humano jamais imaginou, tais são os bens que Deus tem preparado para aqueles que o amam.” 1Cor 2,9. Se você quer alcançar a plenitude dessa Palavra, adentre o Amor Poderoso. Tome posse de toda graça que ele derrama sobre a sua vida, sua família, seus relacionamentos sociais, de trabalho, comunitários.
+                    Essa oração do Terço tem sido um canal de inúmeras graças e diversos testemunhos de conversões, curas e libertações que são verdadeiros milagres.</p>
+                </div>
+
+                <div class="bloco-oracao">
+                  <h3>Início do terço <span class="detalhe">Sinal da Cruz e segurando a Cruz você reza a oração do Creio:</span></h3>
+                  <p>Creio em Deus-Pai, todo poderoso, criador do céu e da terra, e em Jesus Cristo, seu único filho, Nosso Senhor, que foi concebido pelo poder do Espírito Santo, nasceu da Virgem Maria. Padeceu sob Pôncio Pilatos. Foi crucificado, morto e sepultado. Desceu a mansão dos mortos. Ressuscitou ao terceiro dia, subiu aos Céus, está sentado à direita de Deus Pai, todo poderoso, de onde há de vir a julgar os vivos e os mortos. Creio no Espírito Santo, na Santa Igreja Católica, na comunhão dos Santos. Na remissão dos pecados. Na ressurreição da carne. Na vida eterna. Amém</p>
+                </div>
+
+                <div class="bloco-oracao">
+                  <h3>Nas contas maiores:</h3>
+                  <p>Que o meu coração habite no louvor ao Deus Poderoso, na certeza de que Ele Se manifestará.</p>
+                </div>
+
+                <!-- ATENÇÃO: este bloco foi copiado igual da página antiga do terço, mas o texto
+                     é o da Coroa das Lágrimas. Confira se é mesmo o que deve aparecer aqui. -->
+                <div class="bloco-oracao">
+                  <h3>No fim, repete-se três vezes, nas três contas brancas finais:</h3>
+                  <p>Vêde, ó Jesus, que são as lágrimas d'Aquela que mais Vos amou na Terra, e que mais Vos ama no Céu.</p>
+                </div>
+
+                <div class="bloco-oracao">
+                  <h3>Nas contas menores:</h3>
+                  <p>Pode-se usar as palavras conforme a intenção, exemplos: curar, converter, libertar, governar, perdoar, restaurar, transformar, reconciliar, providenciar, etc.</p>
+                </div>
+
+                <div class="bloco-oracao">
+                  <h3>Oração final:</h3>
+                  <p>Àquele, cujo poder, agindo em nós, é capaz de fazer muito além, infinitamente além de tudo o que nós podemos pedir ou conceber, a Ele seja a glória na Igreja e em Cristo Jesus, o Pantokrator, por todas as gerações dos séculos dos séculos! Amém. (cf. Efésios 3, 20-21)</p>
+                </div>
+
+              </div>
+            </details>
+
+            <!-- ---------- NOVENA DE SANTA TERESINHA ---------- -->
+            <details class="oracao" id="oracao-novena-teresinha" name="oracoes">
+              <summary class="oracao-resumo">
+                <span class="oracao-titulos">
+                  <span class="oracao-rotulo">Novena</span>
+                  <span class="oracao-nome">Novena das Rosas de Santa Teresinha</span>
+                </span>
+                <svg class="oracao-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+
+              <div class="oracao-conteudo">
+
+                <!-- COMPARTILHAR -->
+                <div class="compartilhar compartilhar-oracao">
+                  <a href="#" data-rede="facebook" target="_blank" rel="noopener" aria-label="Compartilhar no Facebook" title="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8.6v-7.7H10v-3h2.6V9.2c0-2.6 1.6-4 3.9-4 1.1 0 2 .1 2.3.1v2.7h-1.6c-1.3 0-1.5.6-1.5 1.5v1.9h3l-.4 3h-2.6V22H20a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
+                  </a>
+                  <a href="https://www.instagram.com/compantokrator/" data-rede="instagram" target="_blank" rel="noopener" aria-label="Instagram da Comunidade Pantokrator" title="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                  </a>
+                  <a href="#" data-rede="linkedin" target="_blank" rel="noopener" aria-label="Compartilhar no LinkedIn" title="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  </a>
+                  <a href="#" data-rede="whatsapp" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp" title="WhatsApp">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  </a>
+                  <a href="#" data-rede="telegram" target="_blank" rel="noopener" aria-label="Compartilhar no Telegram" title="Telegram">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                  </a>
+                  <a href="#" data-rede="email" aria-label="Compartilhar por e-mail" title="E-mail">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                  </a>
+                </div>
+
+                <div class="bloco-oracao">
+                  <p>Reze conosco a Novena das Rosas em honra a Santa Teresinha do Menino Jesus, que nos ensinou a pequena via como um caminho seguro para a santidade. A novena começa no dia 22 de setembro e termina no dia 30, véspera da festa litúrgica da santa.</p>
+                </div>
+
+                <!-- ORAÇÃO COMUM (rezada em todos os 9 dias) -->
+                <div class="bloco-oracao">
+                  <h3>Oração a Santa Teresinha <span class="detalhe">(rezada em todos os 9 dias)</span></h3>
+                  <p>Santíssima Trindade, Pai, Filho e Espírito Santo, eu Vos agradeço todos os favores, todas as graças com que enriquecestes a alma de Vossa serva Teresa do Menino Jesus durante os 24 anos que passou na Terra. Pelos méritos de tão querida santinha, concedei-me a graça que ardentemente Vos peço (fazer o pedido), se for conforme a Vossa Santíssima vontade e para salvação de minha alma. Ajudai minha fé e minha esperança, ó Santa Teresinha, cumprindo, mais uma vez, sua promessa de que ninguém Vos invocaria em vão, fazendo-me ganhar uma rosa, sinal de que alcançarei a graça pedida.</p>
+                </div>
+
+                <div class="bloco-oracao">
+                  <h3>Em seguida</h3>
+                  <p>Reza-se 24 vezes (uma para cada ano de vida de Santa Teresinha na Terra): Glória ao Pai, ao Filho e ao Espírito Santo, assim como era no princípio, agora e sempre, por todos os séculos dos séculos. Amém!</p>
+                  <p class="legenda-jaculatorias">A cada Glória ao Pai, pode-se acrescentar a jaculatória:</p>
+                  <ul class="lista-jaculatorias">
+                    <li>Santa Teresinha do Menino Jesus, rogai por nós!</li>
+                  </ul>
+                </div>
+
+                <div class="bloco-oracao">
+                  <h3>Oremos</h3>
+                  <p>Pai-Nosso e Ave-Maria.</p>
+                </div>
+
+                <!-- ÍNDICE DOS 9 DIAS -->
+                <div class="bloco-oracao">
+                  <h3>Os 9 dias da novena</h3>
+                  <p>A cada dia, reze a oração acima seguida do Glória (24 vezes), meditando a frase de Santa Teresinha correspondente ao dia:</p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>1º Dia</h3>
+                  <p><em>"Para mim, a oração é um impulso do coração, um simples olhar dirigido para o Céu, um grito de agradecimento e de amor, tanto em meio ao sofrimento como em meio a alegria. Em uma palavra, é algo grande, algo sobrenatural que me dilata a alma e me une a Jesus."</em></p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>2º Dia</h3>
+                  <p><em>"O mérito não consiste em fazer nem em dar muito, mas, antes, em receber, em amar muito!"</em></p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>3º Dia</h3>
+                  <p><em>"O que me impulsiona a ir para o Céu é o pensamento de poder acender no amor de Deus uma multidão de almas que O louvarão eternamente."</em></p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>4º Dia</h3>
+                  <p><em>"Como é grande o poder da oração! É como uma rainha que em todo o momento tem acesso direto ao rei e pode conseguir tudo o que lhe pede."</em></p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>5º Dia</h3>
+                  <p><em>"Não prefiro nem morrer nem viver... O que o Bom Deus prefere e escolhe para mim, eis o que me agrada mais."</em></p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>6º Dia</h3>
+                  <p><em>"Depois da minha morte, farei cair do Céu uma chuva de rosas."</em></p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>7º Dia</h3>
+                  <p><em>"Quando eu chegar ao Céu, quantas graças vou pedir para vocês! Atormentarei tanto a Nosso Senhor que, se Ele a princípio pensar em me recusar, minha insistência vai obrigá-lo a atender meus desejos."</em></p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>8º Dia</h3>
+                  <p><em>"A caridade não deve consistir em simples sentimentos, mas em obras."</em></p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>9º Dia</h3>
+                  <p><em>"Quero passar o Céu a fazer bem sobre a Terra. Não olharei para as almas somente, mas hei de descer para junto delas. Vai começar a minha missão, que é ensinar os homens a amar a Deus como eu O amo. Só descansarei no fim do mundo, quando estiver completo o número dos eleitos."</em></p>
+                </div>
+
+                <!-- DÚVIDAS -->
+                <div class="bloco-oracao">
+                  <h3>Dúvidas sobre a Novena das Rosas</h3>
+                  <p><strong>Quando começa?</strong> Todos os anos, no dia 22 de setembro.</p>
+                  <p><strong>Quando termina?</strong> No dia 30 de setembro, véspera da festa litúrgica de Santa Teresinha.</p>
+                  <p><strong>O que significa receber uma rosa?</strong> Antes de morrer, Santa Teresinha prometeu que faria "cair do Céu uma chuva de rosas". Por isso, é comum que devotos recebam rosas ou pétalas de forma inesperada como sinal da sua intercessão — embora isso não seja uma regra, e sim um dom.</p>
+                </div>
+
+                <div class="bloco-oracao">
+                  <p>Quer conhecer os testemunhos e graças alcançadas em cada dia desta novena? Você pode ler os relatos completos na fonte original, da <a href="https://bibliotecacatolica.com.br/blog/novenas/novena-das-rosas-santa-teresinha/" target="_blank" rel="noopener">Minha Biblioteca Católica</a>.</p>
+                </div>
+
+              </div>
+            </details>
+
+            <!-- ---------- NOVENA A SÃO JOÃO PAULO II ---------- -->
+            <details class="oracao" id="oracao-novena-sjpii" name="oracoes">
+              <summary class="oracao-resumo">
+                <span class="oracao-titulos">
+                  <span class="oracao-rotulo">Novena</span>
+                  <span class="oracao-nome">Novena a São João Paulo II</span>
+                </span>
+                <svg class="oracao-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+
+              <div class="oracao-conteudo">
+
+                <!-- COMPARTILHAR -->
+                <div class="compartilhar compartilhar-oracao">
+                  <a href="#" data-rede="facebook" target="_blank" rel="noopener" aria-label="Compartilhar no Facebook" title="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8.6v-7.7H10v-3h2.6V9.2c0-2.6 1.6-4 3.9-4 1.1 0 2 .1 2.3.1v2.7h-1.6c-1.3 0-1.5.6-1.5 1.5v1.9h3l-.4 3h-2.6V22H20a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
+                  </a>
+                  <a href="https://www.instagram.com/compantokrator/" data-rede="instagram" target="_blank" rel="noopener" aria-label="Instagram da Comunidade Pantokrator" title="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                  </a>
+                  <a href="#" data-rede="linkedin" target="_blank" rel="noopener" aria-label="Compartilhar no LinkedIn" title="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  </a>
+                  <a href="#" data-rede="whatsapp" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp" title="WhatsApp">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  </a>
+                  <a href="#" data-rede="telegram" target="_blank" rel="noopener" aria-label="Compartilhar no Telegram" title="Telegram">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                  </a>
+                  <a href="#" data-rede="email" aria-label="Compartilhar por e-mail" title="E-mail">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                  </a>
+                </div>
+
+                <div class="bloco-oracao">
+                  <p>São João Paulo II foi um dos papas mais amados da história recente, com um dos pontificados mais longos e marcantes, marcado por sua defesa incansável da vida, das famílias e da dignidade humana, por suas viagens missionárias ao redor do mundo e por sua profunda devoção a Nossa Senhora. Rezemos com fé esta novena em sua honra.</p>
+                  <p><strong>Período tradicional:</strong> de 13 a 21 de outubro.<br><strong>Solenidade:</strong> 22 de outubro.</p>
+                </div>
+
+                <!-- ORAÇÃO COMUM -->
+                <div class="bloco-oracao">
+                  <h3>Oração a São João Paulo II <span class="detalhe">(rezada em todos os 9 dias)</span></h3>
+                  <p>Ó Deus, rico em misericórdia, que fizestes do vosso servo São João Paulo II um pastor zeloso, defensor da vida e da família e testemunha corajosa de Cristo diante do mundo, concedei-nos, por sua intercessão, a graça que hoje Vos pedimos (fazer o pedido), se for conforme a Vossa Santíssima vontade e para o bem de nossa alma. Ensinai-nos a não ter medo de viver segundo o Evangelho, como ele nos ensinou pelo exemplo. Por Cristo, Nosso Senhor. Amém.</p>
+                  <p class="legenda-jaculatorias">Em seguida, reza-se:</p>
+                  <ul class="lista-jaculatorias">
+                    <li>Pai-Nosso</li>
+                    <li>Ave-Maria</li>
+                    <li>Glória ao Pai</li>
+                  </ul>
+                </div>
+
+                <div class="bloco-oracao">
+                  <h3>Os 9 dias da novena</h3>
+                  <p>A cada dia, reze a oração comum acima meditando o tema correspondente:</p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>1º Dia <span class="detalhe">— o Amor</span></h3>
+                  <p>São João Paulo II insistia que a grandeza de uma pessoa não está no que ela possui, mas em quem ela é e no que compartilha com os outros. Peçamos hoje a graça de viver o amor verdadeiro, com coragem, mesmo quando isso significa nadar contra a corrente do mundo.</p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>2º Dia <span class="detalhe">— a Verdade</span></h3>
+                  <p>Para o santo papa, a verdade é a luz da inteligência humana, e é ela que torna o homem verdadeiramente livre. Peçamos hoje a graça de buscar sinceramente a verdade e de ter a coragem de vivê-la, mesmo quando ela exige renúncias.</p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>3º Dia <span class="detalhe">— a Pessoa</span></h3>
+                  <p>Em sua primeira encíclica, João Paulo II ensinou que o homem não consegue compreender a si mesmo plenamente a não ser em Cristo, que revela ao homem o próprio homem. Peçamos hoje a graça de nos aproximarmos mais de Jesus para descobrirmos quem verdadeiramente somos.</p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>4º Dia <span class="detalhe">— a Família</span></h3>
+                  <p>São João Paulo II dizia que uma família que tira sua força de Deus se torna força para toda uma nação. Peçamos hoje pelas famílias do mundo inteiro, para que sejam lugares de amor, oração e acolhimento à vida.</p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>5º Dia <span class="detalhe">— a Juventude</span></h3>
+                  <p>Grande amigo dos jovens e fundador da Jornada Mundial da Juventude, João Paulo II os convidava a exigir mais de si mesmos e a serem construtores de um mundo novo, fundado na verdade e no amor. Peçamos hoje pelos jovens de nossas famílias e comunidades.</p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>6º Dia <span class="detalhe">— o Pecado</span></h3>
+                  <p>João Paulo II ensinava que, mesmo diante do pecado, Deus não se afasta de nós: Ele aguarda, como o pai da parábola do filho pródigo, o nosso retorno para acolher-nos com misericórdia. Peçamos hoje a graça de um coração contrito e confiante.</p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>7º Dia <span class="detalhe">— a Misericórdia</span></h3>
+                  <p>Grande devoto e responsável por difundir a devoção à Divina Misericórdia no mundo todo, João Paulo II repetia que nada é mais necessário ao homem do que a misericórdia de Deus. Peçamos hoje a graça de confiar totalmente n'Ele, repetindo: "Jesus, eu confio em Vós".</p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>8º Dia <span class="detalhe">— Virgem Maria</span></h3>
+                  <p>Com o lema "Totus Tuus" ("Todo teu"), João Paulo II consagrou toda a sua vida e o seu pontificado a Nossa Senhora. Peçamos hoje a graça de também nos entregarmos com confiança filial à proteção de Maria.</p>
+                </div>
+
+                <div class="bloco-oracao bloco-dia">
+                  <h3>9º Dia <span class="detalhe">— a Eucaristia</span></h3>
+                  <p>João Paulo II via na Eucaristia o maior dom que Cristo deixou à Igreja: a Sua própria presença real, até o fim dos tempos. Peçamos hoje a graça de uma fé viva na Eucaristia e de um amor cada vez maior pela Santa Missa.</p>
+                </div>
+
+                <div class="bloco-oracao">
+                  <p>Quer aprofundar sua novena com os textos originais de São João Paulo II (trechos de suas homilias, cartas e encíclicas) e a ladainha completa em sua honra? Você pode consultar a fonte original na <a href="https://bibliotecacatolica.com.br/blog/novenas/novena-a-sao-joao-paulo/" target="_blank" rel="noopener">Minha Biblioteca Católica</a>.</p>
+                </div>
+
+              </div>
+            </details>
+
+          </div>
+        </div>
+
+        <!-- ============ ABA: NOTÍCIA ============ -->
+        <div class="painel-aba" role="tabpanel" id="painel-noticia" aria-labelledby="aba-noticia" hidden>
+          <!--
+            QUANDO TIVER NOTÍCIAS: apague a caixa "aba-vazia" abaixo e use a mesma
+            estrutura de cards da aba de Artigos (.grade-conteudos > .cartao-artigo).
+          -->
+          <div class="aba-vazia">
+            <strong>Novas notícias em breve</strong>
+            Estamos preparando este espaço. Volte em breve!
+          </div>
+        </div>
+
+        <!-- ============ ABA: LENTE CATÓLICA ============
+             Os cards (só a capa de cada vídeo) são montados pelo js/paginas/artigos.js,
+             lendo a playlist do YouTube. Cada card abre o vídeo no YouTube.
+             O id da aba serve de link direto: artigos.html#lente-catolica -->
+        <div class="painel-aba" role="tabpanel" id="painel-lente-catolica" aria-labelledby="aba-lente-catolica" hidden>
+          <h2 class="titulo-secao-videos">Episódios</h2>
+          <div class="grade-videos" id="gradeVideos"></div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== RODAPÉ ==================== -->
+  <footer class="rodape">
+    <div class="container">
+
+      <div class="rodape-grade">
+        <div>
+          <h4>Quem Somos</h4>
+          <ul>
+            <li><a href="sobre-nos.html">Quem somos</a></li>
+            <li><a href="artigos.html">Artigos</a></li>
+            <li><a href="ebook.html">Ebooks</a></li>
+            <li><a href="projetos.html">Nossos Projetos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Onde Estamos</h4>
+          <ul>
+            <li><a href="onde-estamos.html">Sede Fundacional</a></li>
+            <li><a href="onde-estamos.html">Missão Morales</a></li>
+            <li><a href="onde-estamos.html">Missão França</a></li>
+            <li><a href="onde-estamos.html">Missão em Jaguariúna</a></li>
+            <li><a href="onde-estamos.html">Missão em Santos</a></li>
+            <li><a href="onde-estamos.html">Missão São José dos Campos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Entre Aqui</h4>
+          <ul>
+            <li><a href="pages/doacoes.html">Doações</a></li>
+            <li><a href="pages/pedido-oracao.html">Pedido de oração</a></li>
+            <li><a href="pages/contato.html">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Redes Sociais</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/compantokrator/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.youtube.com/@compantokrator" target="_blank">Youtube</a></li>
+            <li><a href="https://open.spotify.com/intl-pt/artist/7LbSgDUNXEhzbdzxePeo5Q" target="_blank">Spotify</a></li>
+            <li><a href="https://www.facebook.com/compantokrator/?locale=pt_BR" target="_blank">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="index.html" class="logo">
+        <img src="../img/logo.png" alt="Pantokrator">
+      </a>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+  <script src="../js/submenu-conteudos.js"></script>
+  <script src="../js/scroll-revelar.js"></script>
+  <script src="../js/paginas/artigos.js"></script>
+  <script>
+    /* Links de compartilhar de cada oração: cada uma compartilha o seu próprio link direto (ex.: artigos.html#oracao-terco-tap) */
+    (function () {
+      var base = window.location.href.split('#')[0];
+      document.querySelectorAll('.oracao').forEach(function (oracao) {
+        var nome = oracao.querySelector('.oracao-nome').textContent.trim();
+        var url = encodeURIComponent(base + '#' + oracao.id);
+        var texto = encodeURIComponent(nome + ' | Pantokrator');
+        var redes = {
+          facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + url,
+          linkedin: 'https://www.linkedin.com/sharing/share-offsite/?url=' + url,
+          whatsapp: 'https://api.whatsapp.com/send?text=' + texto + '%20' + url,
+          telegram: 'https://t.me/share/url?url=' + url + '&text=' + texto,
+          email: 'mailto:?subject=' + texto + '&body=' + url
+        };
+        oracao.querySelectorAll('.compartilhar a[data-rede]').forEach(function (a) {
+          var rede = a.getAttribute('data-rede');
+          if (redes[rede]) a.setAttribute('href', redes[rede]);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+/* ==========================================================================
+   PÁGINA NOSSOS PROJETOS — apresentação em cartões expansíveis
+   Esquerda: título grande + resumo. Direita: carrossel de cartões com foto
+   e nome; ao clicar, o cartão se expande e mostra o texto da obra.
+   ========================================================================== */
+
+.topo-pagina {
+  padding: 3rem 0 4rem;
+}
+
+.projetos-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+/* ---------- Coluna de apresentação ---------- */
+.categoria {
+  display: inline-block;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-vermelho);
+  border-bottom: 3px solid var(--cor-dourado);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.titulo-principal {
+  font-family: var(--fonte-titulo);
+  font-weight: 500;
+  font-size: clamp(2.1rem, 7vw, 3.4rem);
+  line-height: 1.1;
+  color: var(--cor-marinho);
+  margin-bottom: 1.5rem;
+}
+
+.titulo-principal span {
+  color: var(--cor-vermelho);
+}
+
+.projetos-intro p {
+  max-width: 440px;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--cor-marinho);
+  opacity: 0.75;
+}
+
+/* ---------- Carrossel ---------- */
+.carrossel {
+  min-width: 0; /* permite o trilho rolar dentro da coluna do grid */
+}
+
+.carrossel-trilho {
+  position: relative; /* referência para o cálculo de rolagem no JS */
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.25rem 0.25rem 1rem;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.carrossel-trilho::-webkit-scrollbar {
+  display: none;
+}
+
+.carrossel-controles {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.carrossel-dica {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--cor-marinho);
+  opacity: 0.65;
+}
+
+.carrossel-seta {
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid var(--cor-marinho);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cor-marinho);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.carrossel-seta:hover {
+  background: var(--cor-marinho);
+  color: #fff;
+}
+
+/* ---------- Cartão de projeto ---------- */
+.card {
+  position: relative;
+  flex: 0 0 min(62vw, 230px);
+  height: 480px;
+  border-radius: 30px;
+  overflow: hidden;
+  color: #fff;
+  background: #1c1c1c;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: flex-basis 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.card.aberto {
+  flex-basis: min(86vw, 460px);
+  cursor: default;
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--cor-dourado);
+  outline-offset: 3px;
+}
+
+.card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.card:not(.aberto):hover img {
+  transform: scale(1.04);
+}
+
+/* Degradê para dar leitura ao texto sobre a foto */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.05) 65%);
+  transition: background 0.4s ease;
+}
+
+.card.aberto::after {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.93), rgba(0, 0, 0, 0.65));
+}
+
+.card-conteudo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.4rem;
+}
+
+.card-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #fff;
+  margin: 0 0 0.4rem;
+}
+
+.card-resumo {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+}
+
+.card.aberto .card-resumo {
+  display: none;
+}
+
+/* Texto completo: escondido até o cartão abrir */
+.card-texto {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.4s ease 0.15s;
+}
+
+.card.aberto .card-texto {
+  max-height: 290px;
+  opacity: 1;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+  padding-right: 0.4rem;
+}
+
+.card-texto p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.94);
+  margin: 0 0 0.7rem;
+  text-align: left;
+}
+
+.card-texto p:last-child {
+  margin-bottom: 0;
+}
+
+.card-fechar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--cor-marinho);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: none;
+}
+
+.card.aberto .card-fechar {
+  display: block;
+}
+
+/* ---------- Desktop: duas colunas, como na referência ---------- */
+@media (min-width: 900px) {
+  .projetos-hero {
+    grid-template-columns: minmax(300px, 0.8fr) 1.4fr;
+    gap: 3.5rem;
+  }
+
+  .card {
+    height: 520px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card img,
+  .card::after,
+  .card-texto {
+    transition: none;
+  }
+}

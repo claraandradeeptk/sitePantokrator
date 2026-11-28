@@ -1,0 +1,491 @@
+/* =====================================================
+   LITURGIA DIÁRIA  |  css/liturgia.css
+   Para mudar o visual, ajuste só as variáveis abaixo.
+   ===================================================== */
+
+.lit-pagina {
+  --lit-destaque:  #143C4B;          /* azul petróleo */
+  --lit-destaque-escuro:  #143C4B;
+  --lit-marsala: #82322D;           /* vermelho marsala */
+  --lit-dourado: #E1A523;           /* dourado */
+  --lit-texto: #3d3d3d;
+  --lit-fundo: #FBF9F6;            /* off-white */
+  --lit-superficie: #ffffff;
+  --lit-borda: #e3dfd5;
+  --lit-cor-liturgica: #2e9e5b;     /* trocada pelo JS conforme o dia */
+  --lit-fonte: 1.05rem;             /* alterada pelos botões A+ / A- */
+  --lit-espaco-topo: 130px;         /* espaço para o cabeçalho do site */
+
+  background: var(--lit-fundo);
+  color: var(--lit-texto);
+  padding: var(--lit-espaco-topo) 0 80px;
+  min-height: 70vh;
+}
+
+.lit-container {
+  max-width: 880px;
+}
+
+/* ---------- Barra superior ---------- */
+.lit-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 36px;
+  padding-bottom: 16px;
+  border-bottom: 4px solid var(--lit-dourado);
+}
+
+.lit-titulo-pagina {
+  margin: 0;
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lit-marsala);
+}
+
+/* ---------- Calendário ---------- */
+.lit-data {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lit-data button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.lit-data-botao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 6px 8px;
+  background: var(--lit-superficie);
+  color: var(--lit-destaque);
+  border: 2px solid var(--lit-destaque);
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.lit-data-botao:hover {
+  background: var(--lit-destaque);
+  color: #fff;
+}
+
+.lit-data-icone {
+  width: 28px;
+  height: 28px;
+}
+
+.lit-data-dia {
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.lit-data-mes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.lit-data-seta {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: var(--lit-destaque);
+  border: 1px solid var(--lit-borda);
+  border-radius: 50%;
+  font-size: 0.85rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.lit-data-seta:hover {
+  border-color: var(--lit-destaque);
+  background: var(--lit-superficie);
+}
+
+.lit-hoje {
+  padding: 8px 16px;
+  background: transparent;
+  color: var(--lit-destaque-escuro);
+  border: 1px solid var(--lit-borda);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.lit-hoje:hover {
+  border-color: var(--lit-destaque);
+  background: var(--lit-superficie);
+}
+
+/* ---------- Calendário (popup) ---------- */
+.lit-calendario {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 40;
+  width: 310px;
+  background: var(--lit-superficie);
+  border: 1px solid #d4d4d4;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.lit-calendario[hidden] { display: none; }
+
+.lit-cal-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 6px;
+}
+
+.lit-cal-titulo {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #3d3d3d;
+}
+
+.lit-cal-seta {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: #c4c4c4;
+  border: 0;
+  font-family: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.lit-cal-seta:hover { color: var(--lit-destaque); }
+
+.lit-cal-semana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #e9e9e9;
+}
+
+.lit-cal-semana span {
+  padding: 9px 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.lit-cal-dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.lit-cal-dia,
+.lit-cal-vazio {
+  height: 41px;
+  border-top: 1px solid #ececec;
+  border-right: 1px solid #ececec;
+}
+
+.lit-cal-dia:nth-child(7n),
+.lit-cal-vazio:nth-child(7n) { border-right: 0; }
+
+.lit-cal-dia {
+  background: transparent;
+  color: var(--lit-destaque);
+  border-bottom: 0;
+  border-left: 0;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.lit-cal-dia:hover { background: #f1eee6; }
+
+/* dia de hoje: só um contorno discreto */
+.lit-cal-hoje { box-shadow: inset 0 0 0 1px var(--lit-destaque); }
+
+/* dia selecionado */
+.lit-cal-dia[aria-pressed="true"] {
+  background: var(--lit-destaque);
+  color: #fff;
+}
+
+.lit-cal-dia:focus-visible { outline-offset: -3px; }
+
+/* ---------- Celebrações (quando há mais de uma) ---------- */
+.lit-celebracoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.lit-celebracoes[hidden] { display: none; }
+
+.lit-celebracao {
+  padding: 8px 16px;
+  background: var(--lit-superficie);
+  color: var(--lit-texto);
+  border: 1px solid var(--lit-borda);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.lit-celebracao:hover { border-color: var(--lit-destaque); }
+
+.lit-celebracao[aria-pressed="true"] {
+  background: var(--lit-destaque);
+  border-color: var(--lit-destaque);
+  color: #fff;
+}
+
+/* ---------- Cabeçalho da liturgia ---------- */
+.lit-cabecalho {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 16px;
+  padding: 20px 24px;
+  background: var(--lit-superficie);
+  border: 1px solid var(--lit-borda);
+  border-radius: 16px;
+}
+
+.lit-cor {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.lit-cor-icone {
+  width: 12px;
+  height: 14px;
+  color: var(--lit-cor-liturgica);
+  /* contorno para a cor Branca não sumir no fundo claro */
+  filter: drop-shadow(0 0 0.6px rgba(0, 0, 0, 0.55));
+}
+
+.lit-titulo {
+  margin: 4px 0 0;
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  line-height: 1.25;
+  color: var(--lit-destaque);
+}
+
+.lit-ferramentas {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.lit-ferramenta {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: var(--lit-destaque);
+  border: 2px solid var(--lit-destaque);
+  border-radius: 50%;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.lit-ferramenta svg { width: 18px; height: 18px; }
+
+.lit-ferramenta:hover:not(:disabled) {
+  background: var(--lit-destaque);
+  color: #fff;
+}
+
+.lit-ferramenta:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* ---------- Abas ---------- */
+.lit-abas {
+  display: flex;
+  gap: 8px;
+  padding: 2px 2px 6px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.lit-aba {
+  flex: 1 0 auto;
+  min-width: 120px;
+  padding: 14px 18px;
+  background: var(--lit-superficie);
+  color: var(--lit-destaque);
+  border: 1px solid var(--lit-borda);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.lit-aba:hover { background: #f1eee6; }
+
+.lit-aba[aria-selected="true"] {
+  background: var(--lit-destaque);
+  border-color: var(--lit-destaque);
+  color: #fff;
+}
+
+/* ---------- Conteúdo ---------- */
+.lit-conteudo {
+  margin-top: 16px;
+  padding: 32px 36px;
+  background: var(--lit-superficie);
+  border: 1px solid var(--lit-borda);
+  border-radius: 16px;
+  font-size: var(--lit-fonte);
+  line-height: 1.85;
+}
+
+.lit-opcoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.lit-opcao {
+  padding: 6px 14px;
+  background: transparent;
+  color: var(--lit-destaque-escuro);
+  border: 1px solid var(--lit-borda);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.lit-opcao[aria-pressed="true"] {
+  background: var(--lit-destaque);
+  border-color: var(--lit-destaque);
+  color: #fff;
+}
+
+.lit-rotulo {
+  margin: 0 0 14px;
+  font-size: 1em;
+  font-weight: 700;
+  color: #444;
+}
+
+.lit-chamada {
+  margin: 0 0 18px;
+  font-style: italic;
+}
+
+.lit-refrao {
+  margin: 0 0 20px;
+  padding: 12px 16px;
+  background: var(--lit-superficie);
+  border-left: 4px solid var(--lit-destaque);
+  border-radius: 12px;
+}
+
+.lit-conteudo p {
+  margin: 0 0 18px;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.lit-versiculo {
+  font-size: 0.75em;
+  font-weight: 700;
+  color: #333;
+}
+
+.lit-subtitulo {
+  margin: 28px 0 8px;
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--lit-destaque);
+}
+
+.lit-subtitulo:first-child { margin-top: 0; }
+
+.lit-aviso,
+.lit-erro {
+  padding: 28px 0;
+  text-align: center;
+  color: #777;
+}
+
+.lit-erro strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--lit-destaque-escuro);
+  font-size: 1.1em;
+}
+
+/* ---------- Foco visível ---------- */
+.lit-pagina button:focus-visible {
+  outline: 3px solid var(--lit-destaque-escuro);
+  outline-offset: 2px;
+}
+
+/* ---------- Celular ---------- */
+@media (max-width: 640px) {
+  .lit-pagina { --lit-espaco-topo: 100px; }
+
+  .lit-topo { margin-bottom: 24px; }
+
+  .lit-data { flex-wrap: wrap; }
+
+  .lit-calendario {
+    left: 0;
+    right: auto;
+    width: min(310px, calc(100vw - 40px));
+  }
+
+  .lit-cabecalho { flex-direction: column; }
+
+  .lit-aba {
+    min-width: 0;
+    padding: 14px;
+    font-size: 0.85rem;
+  }
+
+  .lit-conteudo { padding: 22px 18px; }
+
+  .lit-cabecalho { padding: 16px 18px; }
+
+  .lit-conteudo p { text-align: left; }
+}

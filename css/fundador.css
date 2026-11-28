@@ -1,0 +1,78 @@
+/* ==========================================================================
+   PÁGINA FUNDADOR - estilos específicos
+   (usa as variáveis e classes globais definidas em style.css)
+   ========================================================================== */
+
+/* ---------- Topo da página ---------- */
+.topo-pagina {
+  padding: 3rem 0 0.5rem;
+}
+
+.categoria {
+  display: inline-block;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-vermelho);
+  border-bottom: 3px solid var(--cor-dourado);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.titulo-principal {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 1.25;
+  color: var(--cor-marinho);
+  margin-bottom: 2rem;
+  max-width: 900px;
+}
+
+/* ---------- Texto em destaque com borda lateral ---------- */
+.texto-destaque {
+  border-left: 4px solid var(--cor-vermelho);
+  padding-left: 1.5rem;
+  max-width: 880px;
+  color: var(--cor-marinho);
+}
+
+.texto-destaque p {
+  margin-bottom: 1.2rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.texto-destaque p:last-child {
+  margin-bottom: 0;
+}
+
+.texto-destaque strong {
+  color: var(--cor-marinho);
+}
+
+/* ---------- Foto do fundador ---------- */
+.secao-imagem-fundador {
+  padding-top: 2.5rem;
+  padding-bottom: 4rem;
+}
+
+.imagem-fundador {
+  width: 100%;
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+}
+
+.imagem-fundador img {
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 700px) {
+  .titulo-principal {
+    font-size: 1.7rem;
+  }
+}

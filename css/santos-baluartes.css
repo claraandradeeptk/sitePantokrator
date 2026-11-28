@@ -1,0 +1,158 @@
+/* ==========================================================================
+   CABEÇALHO DA PÁGINA (eyebrow sublinhado)
+   ========================================================================== */
+.topo-pagina {
+  padding: 2.6rem 0 0.5rem;
+}
+
+.eyebrow-pagina {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cor-marinho);
+  margin-bottom: 2.2rem;
+}
+
+.eyebrow-sublinhado {
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--cor-vermelho);
+}
+
+/* ==========================================================================
+   CITAÇÃO BÍBLICA (referência grande + texto)
+   ========================================================================== */
+.citacao-biblica {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1rem 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.referencia-biblica {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 6rem;
+  line-height: 0.85;
+  color: var(--cor-vermelho);
+  white-space: normal;
+}
+
+.texto-biblico {
+  font-size: 1.4rem;
+  color: var(--cor-marinho);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   DIVISOR "NOSSOS BALUARTES"
+   ========================================================================== */
+.divisor-titulo {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0 0;
+}
+
+.divisor-titulo .linha {
+  flex: 1;
+  height: 2px;
+  background-color: var(--cor-vermelho);
+}
+
+.divisor-titulo h2 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 1.3rem;
+  color: var(--cor-marinho);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   GRADE DE BALUARTES
+   ========================================================================== */
+.grade-baluartes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem 2.2rem;
+}
+
+.baluarte-item {
+  text-align: center;
+}
+
+.baluarte-imagem {
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 100 / 92;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+}
+
+.baluarte-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.baluarte-nome {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.05rem;
+  color: var(--cor-vermelho);
+  margin: 1.3rem 0 0.8rem;
+  line-height: 1.4;
+}
+
+.baluarte-texto {
+  color: var(--cor-marinho);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (max-width: 900px) {
+  .grade-baluartes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grade-baluartes {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .baluarte-texto {
+    max-width: 340px;
+  }
+
+  .citacao-biblica {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .referencia-biblica {
+    font-size: 3.4rem;
+  }
+
+  .texto-biblico {
+    font-size: 1.1rem;
+  }
+
+  .divisor-titulo h2 {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+  }
+}

@@ -1,0 +1,373 @@
+/* ==========================================================================
+   PÁGINA QUEM SOMOS (História + Fundador + Carisma em abas)
+   Usa as variáveis e classes globais definidas em style.css
+   ========================================================================== */
+
+/* ---------- Abas de navegação entre os 3 blocos ---------- */
+.abas-pagina {
+  background-color: var(--cor-branco);
+  border-bottom: 1px solid var(--cor-branco);
+  position: sticky;
+  top: 64px;
+  z-index: 900;
+}
+
+.abas-pagina .container {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+.aba {
+  background: transparent;
+  border: none;
+  padding: 1rem 0.9rem;
+  font-family: var(--fonte-titulo);
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  color: var(--cor-marinho);
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: color var(--transicao), border-color var(--transicao);
+}
+
+.aba:hover {
+  color: var(--cor-vermelho);
+}
+
+.aba.ativo {
+  color: var(--cor-vermelho);
+  border-bottom-color: var(--cor-dourado);
+  font-weight: 700;
+}
+
+/* Só o bloco da aba ativa fica visível */
+.pagina {
+  display: none;
+}
+
+.pagina.ativo {
+  display: block;
+}
+
+/* ---------- Topo de cada bloco (categoria + título) ---------- */
+.topo-pagina {
+  padding: 3rem 0 0.5rem;
+}
+
+.categoria {
+  display: inline-block;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-vermelho);
+  border-bottom: 3px solid var(--cor-dourado);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.titulo-principal {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 1.25;
+  color: var(--cor-marinho);
+  margin-bottom: 1.5rem;
+  max-width: 900px;
+}
+
+.introducao {
+  font-size: 1.05rem;
+  color: var(--cor-marinho);
+  max-width: 880px;
+}
+
+.subtitulo-secao {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--cor-marinho);
+  max-width: 880px;
+  margin-bottom: 1.6rem;
+}
+
+.secao-divisoria {
+  border-top: 1px solid var(--cor-branco);
+}
+
+/* ==========================================================================
+   BLOCO 1 - HISTÓRIA
+   ========================================================================== */
+.texto-historia {
+  max-width: 880px;
+}
+
+.texto-historia p {
+  margin-bottom: 1.2rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.texto-historia p:last-child {
+  margin-bottom: 0;
+}
+
+.linha-tempo-secao {
+  padding-top: 1rem;
+}
+
+.linha-tempo {
+  position: relative;
+  max-width: 880px;
+  padding-left: 2rem;
+}
+
+.linha-tempo::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background-color: var(--cor-branco);
+}
+
+.evento-tempo {
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+
+.evento-tempo:last-child {
+  padding-bottom: 0;
+}
+
+.evento-tempo .marco {
+  position: absolute;
+  left: -2rem;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--cor-dourado);
+  border: 3px solid var(--cor-branco);
+  box-shadow: 0 0 0 2px var(--cor-dourado);
+}
+
+.conteudo-evento .ano {
+  display: inline-block;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--cor-vermelho);
+  margin-bottom: 0.4rem;
+}
+
+.conteudo-evento p {
+  text-align: justify;
+  hyphens: auto;
+  color: var(--cor-marinho);
+}
+
+.foto-historia {
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+}
+
+.foto-historia img {
+  width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   BLOCO 2 - FUNDADOR
+   ========================================================================== */
+.texto-destaque {
+  border-left: 4px solid var(--cor-vermelho);
+  padding-left: 1.5rem;
+  max-width: 880px;
+  color: var(--cor-marinho);
+}
+
+.texto-destaque p {
+  margin-bottom: 1.2rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.texto-destaque p:last-child {
+  margin-bottom: 0;
+}
+
+.texto-destaque strong {
+  color: var(--cor-marinho);
+}
+
+.secao-imagem-fundador {
+  padding-top: 2.5rem;
+  padding-bottom: 4rem;
+}
+
+.imagem-fundador {
+  width: 100%;
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+}
+
+.imagem-fundador img {
+  width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   BLOCO 3 - CARISMA
+   ========================================================================== */
+.lista-espiritualidades {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.item-espiritualidade {
+  display: flex;
+  gap: 1.2rem;
+  border-left: 4px solid var(--cor-vermelho);
+  padding-left: 1.5rem;
+}
+
+.numero-espiritualidade {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--cor-dourado);
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+.item-espiritualidade h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--cor-marinho);
+  margin-bottom: 0.5rem;
+}
+
+.item-espiritualidade p {
+  color: var(--cor-marinho);
+}
+
+.texto-introdutorio {
+  max-width: 880px;
+  color: var(--cor-marinho);
+}
+
+.grade-formas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.card-forma h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--cor-marinho);
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--cor-dourado);
+}
+
+.card-forma p {
+  color: var(--cor-marinho);
+}
+
+.secao-missao {
+  padding-bottom: 4rem;
+}
+
+.faixa-missao {
+  background-color: var(--cor-vermelho);
+  border-radius: var(--raio-borda);
+  margin: 1rem auto 3.5rem;
+}
+
+.faixa-missao .container {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2.2rem 1.5rem;
+}
+
+.missao-titulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 3rem;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--cor-branco);
+}
+
+.faixa-missao p {
+  color: var(--cor-branco);
+  font-size: 1rem;
+  text-align: justify;
+}
+
+/* ==========================================================================
+   REVELAR AO ROLAR
+   ========================================================================== */
+.revelar {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.revelar.visivel {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .revelar {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (max-width: 700px) {
+  .titulo-principal {
+    font-size: 1.7rem;
+  }
+
+  .grade-formas {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .faixa-missao .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .missao-titulo {
+    font-size: 2.2rem;
+  }
+
+  .faixa-missao p {
+    text-align: left;
+  }
+
+  .linha-tempo {
+    padding-left: 1.6rem;
+  }
+
+  .evento-tempo .marco {
+    left: -1.6rem;
+  }
+}

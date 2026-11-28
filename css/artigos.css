@@ -1,0 +1,1422 @@
+/* ==========================================================================
+   ARTIGOS.CSS - ARQUIVO ÚNICO DA PÁGINA CONTEÚDOS (artigos.html)
+   Junta, na ordem, os dois arquivos que a página usava:
+     PARTE 1 - GLOBAL (antigo style.css): variáveis, reset, cabeçalho, menu,
+               submenu "Conteúdos", botões e rodapé
+     PARTE 2 - PÁGINA (antigo artigos.css): busca, abas, cards e orações
+   A ordem foi mantida, então a página fica exatamente igual.
+   ========================================================================== */
+
+
+/* ##########################################################################
+   PARTE 1 - GLOBAL (antigo style.css)
+   ########################################################################## */
+
+/* ==========================================================================
+   VARIÁVEIS GLOBAIS
+   (ajuste os tons abaixo para bater exatamente com a identidade visual)
+   ========================================================================== */
+
+  @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
+:root {
+  --cor-vermelho: #82322D;        /* faixa de eventos, livros */
+  --cor-marinho: #143C4B;         /* rodapé */
+  --cor-dourado: #E1A523;         /* faixa de destaque / botões */
+  --cor-branco: #FBF9F6;
+
+  --fonte-titulo: "Google Sans", sans-serif;
+  --fonte-texto: "Google Sans", sans-serif;
+
+  --largura-maxima: 1180px;
+  --raio-borda: 4px;
+  --transicao: 0.25s ease;
+}
+
+/* ==========================================================================
+   RESET BÁSICO
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fonte-texto);
+  color: var(--cor-marinho);
+  background-color: var(--cor-branco);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+p {
+  text-align: justify;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--largura-maxima);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Espaço reservado para imagem (troque por <img> quando tiver o arquivo) */
+.espaco-imagem {
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  background-color: #c9c9c9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #767676;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+/* ==========================================================================
+   CABEÇALHO
+   ========================================================================== */
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--cor-marinho);
+  color: var(--cor-branco);
+}
+
+.cabecalho .container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 64px;
+}
+
+/* Botão MENU (hambúrguer + texto) */
+.botao-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: transparent;
+  border: none;
+  color: var(--cor-branco);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  justify-self: start;
+}
+
+.botao-menu .icone-hamburguer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 22px;
+}
+
+.botao-menu .icone-hamburguer span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--cor-branco);
+  transition: transform var(--transicao), opacity var(--transicao);
+}
+
+.botao-menu.ativo .icone-hamburguer span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.botao-menu.ativo .icone-hamburguer span:nth-child(2) {
+  opacity: 0;
+}
+.botao-menu.ativo .icone-hamburguer span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.botao-menu-texto {
+  white-space: nowrap;
+}
+
+/* Logo centralizada */
+.logo {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo img {
+  height: 38px;
+  width: auto;
+}
+
+/* No desktop mostra a logo normal; a versão branca só aparece no mobile
+   (ver media query mais abaixo) */
+.logo-imagem--mobile {
+  display: none;
+}
+
+.logo span {
+  font-family: var(--fonte-titulo);
+  font-size: 1.05rem;
+}
+
+/* Links à direita do cabeçalho (Doe aqui / Pedidos de Oração) */
+.cabecalho-links {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* antes: 1.5rem — mais espaço entre os itens */
+}
+
+.cabecalho-links a {
+  color: var(--cor-branco);
+  opacity: 0.5;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color var(--transicao);
+}
+
+.cabecalho-links a:hover {
+  color: var(--cor-dourado);
+}
+
+/* Link "Pedidos de Oração" com borda (estilo pílula) */
+.cabecalho-links .cabecalho-links-texto {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.55rem 1.3rem;
+  transition: color var(--transicao), border-color var(--transicao);
+}
+
+.cabecalho-links .cabecalho-links-texto:hover {
+  border-color: var(--cor-dourado);
+}
+
+.cabecalho-links-icone {
+  display: flex;
+  align-items: center;
+  opacity: 0.5;
+  transition: color var(--transicao), opacity var(--transicao);
+}
+
+.cabecalho-links-icone svg {
+  width: 16px;
+  height: 16px;
+}
+
+.cabecalho-links-icone:hover {
+  color: var(--cor-dourado);
+  opacity: 1;
+}
+
+.cabecalho-links-icone#botaoBusca {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--cor-branco);
+}
+
+/* Caixa de pesquisa suspensa, abre abaixo do cabeçalho ao clicar na lupa */
+.cabecalho-busca {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--cor-marinho);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transicao);
+}
+
+.cabecalho-busca.aberta {
+  max-height: 100px;
+}
+
+.cabecalho-busca-caixa {
+  padding: 1rem 1.5rem;
+}
+
+.cabecalho-busca-form {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 0.55rem 0.9rem;
+}
+
+.cabecalho-busca-icone {
+  width: 18px;
+  height: 18px;
+  color: var(--cor-branco);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.cabecalho-busca-form input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--cor-branco);
+  font-family: var(--fonte-texto);
+  font-size: 0.9rem;
+}
+
+.cabecalho-busca-form input::placeholder {
+  color: var(--cor-branco);
+  opacity: 0.55;
+}
+
+.cabecalho-busca-fechar {
+  background: transparent;
+  border: none;
+  color: var(--cor-branco);
+  opacity: 0.7;
+  font-size: 1.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: opacity var(--transicao);
+}
+
+.cabecalho-busca-fechar:hover {
+  opacity: 1;
+}
+
+/* ---------- Cabeçalho no celular ----------
+   - some com o texto "MENU" (fica só o ícone hambúrguer)
+   - some com o link "PEDIDOS DE ORAÇÃO"
+   - mantém visíveis os ícones de Instagram, YouTube e lupa
+   - troca a logo colorida pela logo-unica-branca */
+@media (max-width: 700px) {
+  .botao-menu-texto {
+    display: none;
+  }
+
+  .logo-imagem--desktop {
+    display: none;
+  }
+
+  .logo-imagem--mobile {
+    display: block;
+  }
+
+  .cabecalho-links {
+    gap: 1.5rem; /* antes: 1rem */
+  }
+
+  .cabecalho-links-texto {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   MENU EM GAVETA (off-canvas) - abre ao clicar em "MENU"
+   ========================================================================== */
+.menu-fundo {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transicao);
+  z-index: 1100;
+}
+
+.menu-fundo.aberto {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-principal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: min(320px, 85%);
+  background-color: var(--cor-branco);
+  transform: translateX(-100%);
+  transition: transform var(--transicao);
+  z-index: 1200;
+  overflow-y: auto;
+}
+
+.menu-principal.aberto {
+  transform: translateX(0);
+}
+
+.menu-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--cor-branco);
+}
+
+.menu-fechar {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--cor-marinho);
+}
+
+.menu-lista {
+  padding: 1rem 0;
+}
+
+.menu-lista li a {
+  display: block;
+  padding: 0.85rem 1.5rem;
+  color: var(--cor-marinho);
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--cor-branco);
+  transition: background-color var(--transicao), color var(--transicao);
+}
+
+.menu-lista li a:hover,
+.menu-lista li a.ativo {
+  background-color: var(--cor-branco);
+  color: var(--cor-vermelho);
+}
+
+/* ==========================================================================
+   BOTÕES
+   ========================================================================== */
+.botao {
+  display: inline-block;
+  background-color: var(--cor-dourado);
+  color: var(--cor-marinho);
+  padding: 0.75rem 1.7rem;
+  border-radius: var(--raio-borda);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border: none;
+  transition: background-color var(--transicao);
+}
+
+.botao:hover {
+  background-color: var(--cor-dourado);
+}
+
+.botao-fantasma {
+  display: inline-block;
+  border: 2px solid var(--cor-branco);
+  color: var(--cor-branco);
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--raio-borda);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  transition: background-color var(--transicao), color var(--transicao);
+}
+
+.botao-fantasma:hover {
+  background-color: var(--cor-branco);
+  color: var(--cor-marinho);
+}
+
+/* ==========================================================================
+   TÍTULOS DE SEÇÃO (usados em várias páginas)
+   ========================================================================== */
+.titulo-secao {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--fonte-titulo);
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+}
+
+.titulo-secao .marca {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+/* Ícone do título de seção (logo pequena ao lado do texto).
+   Fluido com clamp() para não precisar de !important em telas pequenas -
+   substitui o style="height:57px;width:42px" que estava direto no HTML. */
+.icone-titulo-secao {
+  height: clamp(38px, 9vw, 57px);
+  width: clamp(28px, 6.6vw, 42px);
+  flex-shrink: 0;
+}
+
+.secao {
+  padding: 3.5rem 0;
+}
+
+/* ==========================================================================
+   RODAPÉ
+   ========================================================================== */
+.rodape {
+  background-color: var(--cor-marinho);
+  color: #eef2f4;
+  padding: 3rem 0 1.5rem;
+}
+
+.rodape-grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.rodape h4 {
+  font-family: var(--fonte-titulo);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+  color: var(--cor-dourado);
+}
+
+.rodape ul li {
+  margin-bottom: 0.55rem;
+  font-size: 0.9rem;
+}
+
+.rodape a {
+  color: #eef2f4;
+  opacity: 0.85;
+  transition: opacity var(--transicao);
+}
+
+.rodape a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.rodape-logo {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.rodape-logo img {
+  height: 44px;
+  margin: 0 auto;
+}
+
+.rodape-base {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 1.2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   RESPONSIVO GERAL
+   ========================================================================== */
+@media (min-width: 700px) {
+  .secao {
+    padding: 4.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .titulo-secao {
+    font-size: 1.05rem;
+    gap: 0.4rem;
+  }
+}
+
+/* ==========================================================================
+   MENU LATERAL DE NAVEGAÇÃO
+   (barra fixa com links-âncora para páginas longas, como Sobre Nós)
+   ========================================================================== */
+.nav-lateral {
+  display: none;
+  position: fixed;
+  left: clamp(0.8rem, 2vw, 2.4rem);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 500;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 180px;
+}
+ 
+.nav-lateral-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cor-marinho);
+  opacity: 0.6;
+  transition: opacity var(--transicao), color var(--transicao);
+}
+ 
+.nav-lateral-link:hover {
+  opacity: 1;
+  color: var(--cor-vermelho);
+}
+ 
+/* só aparece em telas realmente largas, pra não brigar com o conteúdo */
+@media (min-width: 1400px) {
+  .nav-lateral {
+    display: flex;
+  }
+}
+ 
+/* compensa a altura do cabeçalho fixo (64px) ao pular pra cada seção,
+   pra o título não ficar escondido atrás dele */
+#secao-carisma,
+#secao-fundador,
+#secao-historia,
+#secao-vocacional,
+#secao-baluartes,
+#secao-missoes {
+  scroll-margin-top: 90px;
+}
+ 
+/* ==========================================================================
+   BOTÃO "VOLTAR PARA O INÍCIO DA PÁGINA"
+   ========================================================================== */
+.voltar-topo-wrap {
+  text-align: center;
+  padding: 1.5rem 0 0;
+}
+ 
+.botao-voltar-topo {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--cor-marinho);
+  opacity: 0.55;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: opacity var(--transicao), color var(--transicao);
+}
+ 
+.botao-voltar-topo:hover {
+  opacity: 1;
+  color: var(--cor-vermelho);
+}
+/* ==========================================================================
+   SUBMENU "CONTEÚDOS" (dentro do menu em gaveta)
+   ========================================================================== */
+.menu-submenu-botao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--cor-branco);
+  color: var(--cor-marinho);
+  font-family: inherit;
+  font-size: 0.95rem;
+  text-align: left;
+  transition: color var(--transicao);
+}
+
+.menu-submenu-botao:hover,
+.menu-item-submenu.aberto .menu-submenu-botao {
+  color: var(--cor-vermelho);
+}
+
+.menu-submenu-botao svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transicao);
+}
+
+.menu-item-submenu.aberto .menu-submenu-botao svg {
+  transform: rotate(180deg);
+}
+
+.menu-submenu {
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden; /* evita que os links fechados fiquem acessíveis pelo Tab */
+  background-color: rgba(20, 60, 75, 0.05);
+  transition: max-height var(--transicao), visibility 0s linear var(--transicao);
+}
+
+.menu-item-submenu.aberto .menu-submenu {
+  max-height: 260px;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.menu-lista .menu-submenu li a {
+  padding-left: 2.6rem;
+  font-size: 0.9rem;
+}
+
+
+/* ##########################################################################
+   PARTE 2 - PÁGINA CONTEÚDOS (antigo artigos.css)
+   ########################################################################## */
+
+/* ==========================================================================
+   PÁGINA CONTEÚDOS (artigos.html)
+   Usa as variáveis e classes globais definidas em style.css.
+   Este arquivo é só desta página: cabeçalho da página, busca, abas,
+   cards de artigos e orações expansíveis.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   CABEÇALHO DA PÁGINA (eyebrow sublinhado)
+   ========================================================================== */
+.topo-pagina {
+  padding: 2.4rem 0 1.8rem;
+}
+
+.eyebrow-pagina {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cor-vermelho);
+  margin-bottom: 0.9rem;
+}
+
+/* variação com linha embaixo */
+.eyebrow-sublinhado {
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--cor-vermelho);
+}
+
+/* seção que começa logo abaixo do título, sem espaço em cima */
+.secao.secao-topo-zero {
+  padding-top: 0;
+}
+
+
+/* ==========================================================================
+   BUSCA
+   ========================================================================== */
+.form-busca {
+  max-width: 560px;
+  margin-bottom: 2.4rem;
+}
+
+.campo-busca {
+  width: 100%;
+  padding: 0.85rem 1.3rem 0.85rem 3rem;
+  font-family: var(--fonte-texto);
+  font-size: 0.95rem;
+  color: var(--cor-marinho);
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23143C4B' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 1.1rem center;
+  background-size: 18px;
+  border: 1px solid rgba(20, 60, 75, 0.25);
+  border-radius: 999px;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color var(--transicao), box-shadow var(--transicao);
+}
+
+.campo-busca::placeholder {
+  color: rgba(20, 60, 75, 0.5);
+}
+
+.campo-busca:focus {
+  outline: none;
+  border-color: var(--cor-dourado);
+  box-shadow: 0 0 0 3px rgba(225, 165, 35, 0.25);
+}
+
+
+/* ==========================================================================
+   ABAS (Artigos / Formação / Oração / Notícia / Lente Católica)
+   ========================================================================== */
+.abas {
+  display: flex;
+  gap: 0.3rem;
+  margin-bottom: 2.2rem;
+  border-bottom: 1px solid rgba(20, 60, 75, 0.15);
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-margin-top: 90px; /* compensa o cabeçalho fixo ao pular para as abas */
+}
+
+.abas::-webkit-scrollbar {
+  display: none;
+}
+
+.aba {
+  flex: 0 0 auto;
+  padding: 0.9rem 1.4rem;
+  margin-bottom: -1px; /* a linha da aba ativa cobre a linha da barra */
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: var(--fonte-titulo);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(20, 60, 75, 0.55);
+  transition: color var(--transicao), border-color var(--transicao);
+}
+
+.aba:hover {
+  color: var(--cor-marinho);
+}
+
+.aba.ativa {
+  color: var(--cor-vermelho);
+  border-bottom-color: var(--cor-vermelho);
+}
+
+.aba:focus-visible {
+  outline: 2px solid var(--cor-dourado);
+  outline-offset: -2px;
+}
+
+.painel-aba[hidden] {
+  display: none;
+}
+
+.painel-aba.ativo {
+  animation: painel-aparecer 0.35s ease;
+}
+
+@keyframes painel-aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* aba ainda sem conteúdo */
+.aba-vazia {
+  padding: 3.5rem 1.2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: rgba(20, 60, 75, 0.65);
+  border: 1px dashed rgba(20, 60, 75, 0.25);
+  border-radius: 24px;
+}
+
+.aba-vazia strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: var(--fonte-titulo);
+  font-size: 1.15rem;
+  color: var(--cor-marinho);
+}
+
+
+/* ==========================================================================
+   ABA ARTIGOS - banner, miniaturas e cards
+   ========================================================================== */
+
+/* ---------- Banner "Novos artigos toda semana" ---------- */
+.faixa-hero-artigos {
+  position: relative;
+  margin-bottom: 2.5rem;
+  border-radius: 28px;
+  overflow: hidden;
+  background-color: var(--cor-marinho);
+}
+
+.faixa-hero-artigos img {
+  width: 100%;
+  height: clamp(180px, 32vw, 340px);
+  object-fit: cover;
+}
+
+.faixa-hero-artigos::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(8, 24, 31, 0.8) 0%, rgba(8, 24, 31, 0.25) 45%, transparent 70%);
+  pointer-events: none;
+}
+
+.faixa-hero-artigos .titulo-artigo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: clamp(1rem, 3vw, 1.8rem);
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1rem, 0.8rem + 1.2vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  color: var(--cor-branco);
+}
+
+/* ---------- Grade: miniaturas à esquerda, cards à direita ---------- */
+.grade-conteudos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+}
+
+/* Coluna esquerda: miniaturas menores, sem legenda */
+.coluna-miniaturas {
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+}
+
+.miniatura-conteudo {
+  flex: 1 1 0;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: var(--cor-marinho);
+}
+
+.miniatura-conteudo img,
+.img-artigo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.miniatura-conteudo:hover img {
+  transform: scale(1.06);
+}
+
+/* Coluna direita: cards com legenda por cima da imagem */
+.coluna-destaques {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+.cartao-artigo {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: var(--cor-marinho);
+}
+
+.cartao-artigo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cartao-artigo:hover img {
+  transform: scale(1.05);
+}
+
+.cartao-artigo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(8, 24, 31, 0.85) 0%, rgba(8, 24, 31, 0.3) 40%, transparent 65%);
+  pointer-events: none;
+}
+
+.cartao-artigo .titulo-artigo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 1.2rem 1.4rem;
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--cor-branco);
+}
+
+.cartao-artigo:focus-visible,
+.miniatura-conteudo:focus-visible {
+  outline: 3px solid var(--cor-dourado);
+  outline-offset: 3px;
+}
+
+@media (min-width: 600px) {
+  .coluna-destaques {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 800px) {
+  .grade-conteudos {
+    grid-template-columns: minmax(170px, 240px) 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .coluna-miniaturas {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .miniatura-conteudo {
+    flex: none;
+  }
+}
+
+
+/* ==========================================================================
+   ABA ORAÇÃO - lista de orações que expandem ao clicar
+   ========================================================================== */
+.lista-oracoes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 860px;
+}
+
+.oracao {
+  background-color: #fff;
+  border: 1px solid rgba(20, 60, 75, 0.18);
+  border-radius: 22px;
+  overflow: hidden;
+  scroll-margin-top: 90px; /* compensa o cabeçalho fixo ao abrir pelo link */
+  transition: border-color var(--transicao), box-shadow var(--transicao);
+}
+
+.oracao:hover {
+  border-color: rgba(20, 60, 75, 0.35);
+}
+
+.oracao[open] {
+  border-color: var(--cor-dourado);
+  box-shadow: 0 10px 26px rgba(20, 60, 75, 0.1);
+}
+
+/* linha clicável (título da oração) */
+.oracao-resumo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.5rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.oracao-resumo::-webkit-details-marker {
+  display: none;
+}
+
+.oracao-resumo:focus-visible {
+  outline: 3px solid var(--cor-dourado);
+  outline-offset: -3px;
+  border-radius: 22px;
+}
+
+.oracao-titulos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.oracao-rotulo {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--cor-vermelho);
+}
+
+.oracao-nome {
+  font-family: var(--fonte-titulo);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--cor-marinho);
+  transition: color var(--transicao);
+}
+
+.oracao-resumo:hover .oracao-nome {
+  color: var(--cor-vermelho);
+}
+
+.oracao-icone {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--cor-marinho);
+  transition: transform var(--transicao);
+}
+
+.oracao[open] .oracao-icone {
+  transform: rotate(180deg);
+}
+
+/* texto da oração, que aparece ao expandir */
+.oracao-conteudo {
+  padding: 0.3rem 1.5rem 1.8rem;
+  border-top: 1px solid rgba(20, 60, 75, 0.1);
+}
+
+.oracao[open] .oracao-conteudo {
+  animation: painel-aparecer 0.3s ease;
+}
+
+/* ---------- Compartilhar (dentro de cada oração, logo abaixo do título) ---------- */
+.compartilhar {
+  --cor-icone-compartilhar: #143C4B;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.2rem;
+}
+
+.compartilhar a {
+  display: flex;
+  align-items: center;
+  color: var(--cor-icone-compartilhar);
+  transition: color var(--transicao), transform var(--transicao);
+}
+
+.compartilhar a:hover {
+  color: var(--cor-dourado);
+  transform: translateY(-2px);
+}
+
+.compartilhar svg {
+  width: 20px;
+  height: 20px;
+}
+
+.compartilhar-oracao {
+  padding-top: 1.3rem;
+}
+
+@media (max-width: 480px) {
+  .compartilhar {
+    gap: 1rem;
+  }
+}
+
+.bloco-oracao {
+  margin-top: 1.6rem;
+}
+
+.bloco-oracao h3 {
+  margin-bottom: 0.5rem;
+  font-family: var(--fonte-titulo);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--cor-vermelho);
+}
+
+.bloco-oracao .detalhe {
+  font-size: 0.85em;
+  font-weight: 400;
+  color: rgba(20, 60, 75, 0.7);
+}
+
+.bloco-oracao p {
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--cor-marinho);
+  text-align: justify;
+  hyphens: auto;
+}
+
+.bloco-oracao p:last-child {
+  margin-bottom: 0;
+}
+
+.bloco-oracao a {
+  color: var(--cor-vermelho);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.bloco-oracao a:hover {
+  color: var(--cor-marinho);
+}
+
+/* dias das novenas: um fio dourado à esquerda ajuda a separar um do outro */
+.bloco-dia {
+  padding-left: 1rem;
+  border-left: 3px solid var(--cor-dourado);
+}
+
+.legenda-jaculatorias {
+  font-weight: 700;
+}
+
+.lista-jaculatorias {
+  margin: 0.6rem 0 0.2rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--cor-dourado);
+}
+
+.lista-jaculatorias li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--cor-marinho);
+}
+
+.lista-jaculatorias li:last-child {
+  margin-bottom: 0;
+}
+
+
+
+/* ==========================================================================
+   ABA LENTE CATÓLICA - grade só com as capas dos vídeos do YouTube
+   ========================================================================== */
+.titulo-secao-videos {
+  margin-bottom: 1.6rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(20, 60, 75, 0.15);
+  font-family: var(--fonte-titulo);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--cor-marinho);
+}
+
+.grade-videos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+/* aviso (carregando / sem vídeos) ocupa a grade inteira */
+.grade-videos .aba-vazia {
+  grid-column: 1 / -1;
+}
+
+.cartao-video {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: var(--cor-marinho);
+}
+
+.cartao-video img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cartao-video:hover img {
+  transform: scale(1.05);
+}
+
+.cartao-video:focus-visible {
+  outline: 3px solid var(--cor-dourado);
+  outline-offset: 3px;
+}
+
+@media (min-width: 560px) {
+  .grade-videos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .grade-videos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .grade-videos {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+/* ==========================================================================
+   CELULAR
+   ========================================================================== */
+@media (max-width: 560px) {
+  .aba {
+    padding: 0.8rem 1rem;
+    font-size: 0.78rem;
+  }
+
+  .faixa-hero-artigos,
+  .cartao-artigo {
+    border-radius: 20px;
+  }
+
+  .cartao-video {
+    border-radius: 16px;
+  }
+
+  .miniatura-conteudo {
+    border-radius: 14px;
+  }
+
+  .oracao {
+    border-radius: 18px;
+  }
+
+  .oracao-resumo {
+    padding: 1rem 1.1rem;
+  }
+
+  .oracao-nome {
+    font-size: 1.05rem;
+  }
+
+  .oracao-conteudo {
+    padding: 0.2rem 1.1rem 1.5rem;
+  }
+
+  .bloco-oracao p {
+    text-align: left;
+    hyphens: none;
+  }
+}
+
+/* quem prefere menos movimento não vê as animações */
+@media (prefers-reduced-motion: reduce) {
+  .painel-aba.ativo,
+  .oracao[open] .oracao-conteudo {
+    animation: none;
+  }
+
+  .miniatura-conteudo img,
+  .cartao-artigo img,
+  .cartao-video img,
+  .oracao-icone {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   PÁGINA EPISÓDIO (episodio.html) - vídeo do YouTube + título e descrição
+   Reaproveita as variáveis e o estilo geral deste mesmo arquivo.
+   ========================================================================== */
+/* dois nomes de classe de propósito: .secao.secao-topo-zero zera o topo e
+   ganharia de uma classe só */
+.secao.secao-episodio {
+  padding-top: clamp(2.2rem, 5vw, 3.6rem);
+}
+
+/* link para voltar para a lista de episódios, acima do player */
+.voltar-episodios {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--cor-vermelho);
+  transition: opacity var(--transicao);
+}
+
+.voltar-episodios svg {
+  flex-shrink: 0;
+}
+
+.voltar-episodios:hover {
+  opacity: 0.7;
+}
+
+/* player do YouTube, no mesmo estilo arredondado dos cards da grade de vídeos */
+.player-episodio {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: var(--cor-marinho);
+  margin-bottom: 2rem;
+}
+
+.player-episodio iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* título e descrição, logo abaixo do player */
+.texto-episodio {
+  max-width: 820px;
+}
+
+.texto-episodio .eyebrow-pagina {
+  margin-bottom: 0.7rem;
+}
+
+.titulo-episodio {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--cor-marinho);
+  margin-bottom: 1.2rem;
+}
+
+.descricao-episodio p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--cor-marinho);
+  text-align: left;
+  white-space: pre-line; /* preserva quebras de linha simples da descrição */
+}
+
+.descricao-episodio p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 560px) {
+  .player-episodio {
+    border-radius: 16px;
+  }
+}

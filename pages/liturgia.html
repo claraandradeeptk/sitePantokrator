@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liturgia Diária | Pantokrator</title>
+
+  <!-- CSS global (menu, rodapé, botões - usado em todas as páginas) -->
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- CSS específico desta página -->
+  <link rel="stylesheet" href="../css/liturgia.css">
+</head>
+<body>
+
+  <!-- ==================== CABEÇALHO ==================== -->
+  <header class="cabecalho">
+    <div class="container">
+      <button class="botao-menu" aria-label="Abrir menu">
+        <span class="icone-hamburguer">
+          <span></span><span></span><span></span>
+        </span>
+        MENU
+      </button>
+
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.png" alt="Pantokrator" class="logo-imagem logo-imagem--desktop" style="height: 65%; width: 65%;">
+        <img src="../img/logo-unica-branca.png" alt="Pantokrator" class="logo-imagem logo-imagem--mobile">
+      </a>
+
+      <nav class="cabecalho-links">
+        <a href="#" class="cabecalho-links-texto">PEDIDOS DE ORAÇÃO</a>
+        <a href="https://www.instagram.com/compantokrator/" target="_blank" rel="noopener" class="cabecalho-links-icone" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@compantokrator" target="_blank" rel="noopener" class="cabecalho-links-icone" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M10 9l6 3-6 3V9z" fill="currentColor"/>
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== MENU EM GAVETA ==================== -->
+  <div class="menu-fundo"></div>
+  <nav class="menu-principal">
+    <div class="menu-cabecalho">
+      <button class="menu-fechar" aria-label="Fechar menu">&times;</button>
+    </div>
+    <ul class="menu-lista">
+      <li><a href="./sobre-nos.html">Quem Somos</a></li>
+      <li><a href="./artigos.html">Conteúdos</a></li>
+      <li><a href="./liturgia-diaria.html">Liturgia Diária</a></li>
+      <li><a href="./projetos.html">Obra de Evangelização</a></li>
+      <li><a href="./onde-estamos.html">Onde Estamos</a></li>
+      <li><a href="#">Doe Aqui</a></li>
+      <li><a href="#">Fale Conosco</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="lit-pagina">
+      <div class="container lit-container">
+
+        <!-- ===== Barra superior: título + calendário ===== -->
+        <div class="lit-topo">
+          <h1 class="lit-titulo-pagina">Liturgia Diária</h1>
+
+          <div class="lit-data" role="group" aria-label="Escolher a data">
+            <button type="button" class="lit-data-seta" id="lit-dia-anterior" aria-label="Dia anterior">&#10094;</button>
+
+            <button type="button" class="lit-data-botao" id="lit-abrir-calendario" aria-label="Abrir calendário" aria-haspopup="dialog" aria-expanded="false">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="lit-data-icone">
+                <rect x="3.5" y="5" width="17" height="15.5" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M8 13.5h2M14 13.5h2M8 17h2M14 17h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+              <span class="lit-data-dia" id="lit-data-dia">--</span>
+              <span class="lit-data-mes">
+                <span id="lit-data-mes">---</span>
+                <span id="lit-data-ano">----</span>
+              </span>
+            </button>
+
+            <button type="button" class="lit-data-seta" id="lit-dia-proximo" aria-label="Próximo dia">&#10095;</button>
+            <button type="button" class="lit-hoje" id="lit-hoje">Hoje</button>
+
+            <!-- calendário (aberto pelo botão da data) -->
+            <div class="lit-calendario" id="lit-calendario" role="dialog" aria-label="Escolher o dia" hidden>
+              <div class="lit-cal-topo">
+                <button type="button" class="lit-cal-seta" id="lit-cal-anterior" aria-label="Mês anterior">&#10094;</button>
+                <span class="lit-cal-titulo" id="lit-cal-titulo" aria-live="polite"></span>
+                <button type="button" class="lit-cal-seta" id="lit-cal-proximo" aria-label="Próximo mês">&#10095;</button>
+              </div>
+              <div class="lit-cal-semana" aria-hidden="true">
+                <span>DOM</span><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SAB</span>
+              </div>
+              <div class="lit-cal-dias" id="lit-cal-dias"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Escolha da celebração (aparece só quando há mais de uma) ===== -->
+        <div class="lit-celebracoes" id="lit-celebracoes" hidden></div>
+
+        <!-- ===== Cor litúrgica, título e ferramentas ===== -->
+        <div class="lit-cabecalho">
+          <div class="lit-cabecalho-texto">
+            <span class="lit-cor">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="lit-cor-icone"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z" fill="currentColor"/></svg>
+              Cor litúrgica: <span id="lit-cor-nome">--</span>
+            </span>
+            <h2 class="lit-titulo" id="lit-titulo">Carregando liturgia...</h2>
+          </div>
+
+          <div class="lit-ferramentas">
+            <button type="button" class="lit-ferramenta" id="lit-fonte-mais" aria-label="Aumentar o tamanho da letra">+</button>
+            <button type="button" class="lit-ferramenta" id="lit-fonte-menos" aria-label="Diminuir o tamanho da letra">&minus;</button>
+          </div>
+        </div>
+
+        <!-- ===== Abas (1ª Leitura, Salmo, Evangelho...) ===== -->
+        <div class="lit-abas" id="lit-abas" role="tablist" aria-label="Partes da liturgia"></div>
+
+        <!-- ===== Conteúdo ===== -->
+        <article class="lit-conteudo" id="lit-conteudo" role="tabpanel" aria-live="polite">
+          <p class="lit-aviso">Carregando liturgia...</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== RODAPÉ ==================== -->
+  <footer class="rodape">
+    <div class="container">
+
+      <div class="rodape-grade">
+        <div>
+          <h4>Quem Somos</h4>
+          <ul>
+            <li><a href="sobre-nos.html">Quem somos</a></li>
+            <li><a href="artigos.html">Artigos</a></li>
+            <li><a href="ebook.html">Ebooks</a></li>
+            <li><a href="projetos.html">Nossos Projetos</a></li>
+            <li><a href="liturgia-diaria.html">Liturgia Diária</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Onde Estamos</h4>
+          <ul>
+            <li><a href="onde-estamos.html">Sede Fundacional</a></li>
+            <li><a href="onde-estamos.html">Missão Morales</a></li>
+            <li><a href="onde-estamos.html">Missão França</a></li>
+            <li><a href="onde-estamos.html">Missão em Jaguariúna</a></li>
+            <li><a href="onde-estamos.html">Missão em Santos</a></li>
+            <li><a href="onde-estamos.html">Missão São José dos Campos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Entre Aqui</h4>
+          <ul>
+            <li><a href="pages/doacoes.html">Doações</a></li>
+            <li><a href="pages/pedido-oracao.html">Pedido de oração</a></li>
+            <li><a href="pages/contato.html">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Redes Sociais</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/compantokrator/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.youtube.com/@compantokrator" target="_blank">Youtube</a></li>
+            <li><a href="https://open.spotify.com/intl-pt/artist/7LbSgDUNXEhzbdzxePeo5Q" target="_blank">Spotify</a></li>
+            <li><a href="https://www.facebook.com/compantokrator/?locale=pt_BR" target="_blank">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.png" alt="Pantokrator">
+      </a>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+  <script src="../js/submenu-conteudos.js"></script>
+  <script src="../js/liturgia.js"></script>
+</body>
+</html>

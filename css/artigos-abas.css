@@ -1,0 +1,106 @@
+/* ==========================================================================
+   ABAS DE CONTEÚDO (Artigos / Formação / Oração / Notícia)
+   Usado em: pages/artigos.html
+   (usa as variáveis e classes globais definidas em style.css)
+   ========================================================================== */
+.abas {
+  display: flex;
+  gap: 0.3rem;
+  margin: 2.4rem 0 2.2rem;
+  border-bottom: 1px solid rgba(20, 60, 75, 0.15);
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-margin-top: 90px; /* compensa o cabeçalho fixo ao pular para as abas */
+}
+
+.abas::-webkit-scrollbar {
+  display: none;
+}
+
+.aba {
+  flex: 0 0 auto;
+  padding: 0.9rem 1.4rem;
+  margin-bottom: -1px; /* a linha ativa cobre a linha da barra */
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: var(--fonte-titulo);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(20, 60, 75, 0.55);
+  transition: color var(--transicao), border-color var(--transicao);
+}
+
+.aba:hover {
+  color: var(--cor-marinho);
+}
+
+.aba.ativa {
+  color: var(--cor-vermelho);
+  border-bottom-color: var(--cor-vermelho);
+}
+
+.aba:focus-visible {
+  outline: 2px solid var(--cor-dourado);
+  outline-offset: -2px;
+}
+
+/* ---------- Painéis ---------- */
+.painel-aba[hidden] {
+  display: none;
+}
+
+.painel-aba.ativo {
+  animation: painel-aparecer 0.35s ease;
+}
+
+@keyframes painel-aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* espaço entre o banner e a grade dentro da aba de Artigos
+   (se o seu CSS atual já define essa margem, pode remover esta regra) */
+.painel-aba .faixa-hero-artigos {
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- Aba ainda sem conteúdo ---------- */
+.aba-vazia {
+  padding: 3.5rem 1.2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: rgba(20, 60, 75, 0.65);
+  border: 1px dashed rgba(20, 60, 75, 0.25);
+  border-radius: 24px;
+}
+
+.aba-vazia strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: var(--fonte-titulo);
+  font-size: 1.15rem;
+  color: var(--cor-marinho);
+}
+
+/* ---------- Celular ---------- */
+@media (max-width: 560px) {
+  .aba {
+    padding: 0.8rem 1rem;
+    font-size: 0.78rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .painel-aba.ativo {
+    animation: none;
+  }
+}
